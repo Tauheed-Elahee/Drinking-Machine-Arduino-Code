@@ -1,0 +1,30 @@
+Edge Cases: 
+Bluetooth
+1.	Bluetooth connection fails “mid-selection” (Bluetooth module, not the phone)
+2.	Button on mobile app gets pressed while the Bluetooth module has lost connection to the phone?
+3.	App gets opened and closed repeatedly?
+App Interface
+1.	Two people trying to dispense a drink at the same time (Through the mobile App).
+2.	Phone dies after you pick ‘select drink’, but before you select it.
+3.	More inputs through the mobile app while the D.D.E.D is dispensing.
+4.	Pressing / holding two buttons at once on the mobile app
+5.	Holding a single button on the mobile app.
+6.	Canceling drink dispensing while D.D.E.D is dispensing? (if this is possible)
+Buttons
+1.	Pressing/Holding two buttons at once.
+2.	Someone presses buttons while a drink is dispensing
+3.	Two people trying to dispense a drink at the same time (One through mobile, one through buttons).
+4.	Pressing buttons while the D.D.E.D is dispensing a drink.
+5.	Someone presses the cancel press confirm button before they’ve selected anything/ before they’re prompted to.
+6.	Someone tries to dispense a drink while someone is playing the game for a drink. (With the buttons)
+Plinko
+1.	Multiple coins / objects get put into the plinko machine while gambling for your drink.
+2.	Selecting to play a game for your drink, but not doing anything after.
+3.	Coin \ object gets put into the plinko machine before anyone has selected to play a game.
+4.	Putting a coin in the plinko game while a drink is being dispensed. 
+5.	Playing plinko before selecting anything.
+Water sensors / containers
+1.	Container gets removed for refill because water sensor indicates the liquid inside is low, but is then put back in without being refilled.
+2.	Level of water left in container is JUST at the level where it should say “refill” and constantly flicks between the two outputs on LCD? (how to prevent this)
+Other
+1.	Inputting commands in too fast? (rapidly pressing buttons on the D.D.E.D or mobile App)
