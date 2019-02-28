@@ -1,4 +1,5 @@
 Pin #,I/O,Function
+----------,Communication,----------
 0 – RX0,In,Blutooth – Recieving
 1 – TX0,Out,Blutooth – Transmittig
 ----------,PWM,----------
@@ -6,16 +7,20 @@ Pin #,I/O,Function
 3,Out,LCD
 4,Out,LCD
 5,Out,LCD
-6,,
-7,,
-8,,
-9,,
-10,,
 11,Out,LCD
 12,Out,LCD
-13,,
+13,Out,Speaker – Output
 ----------,Digital,----------
-47,In,Button – Back
-49,In,Button – Down
-51,In,Button – Up
-53,In,Button – Select
+30,In,Button – Back
+31,In,Button – Down
+32,In,Button – Up
+33,In,Button – Select
+40,Out,Motor 1 – Turn Left
+41,Out,Motor 1 – Turn Right
+42,Out,Motor 2 – Turn Left
+43,Out,Motor 2 – Turn Right
+50,,MISO – Deditcated Arduino Pin
+51,,MOSI – Dedicated Arduino Pin
+52,,CLK – Dedicated Arduino Pin
+53,,CS – Dedicated Arduino Pin
+----------,NEEDS TO BE DONE,----------
