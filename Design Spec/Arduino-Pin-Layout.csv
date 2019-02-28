@@ -1,6 +1,7 @@
 Pin #,I/O,Function
 0 – RX0,In,Blutooth – Recieving
 1 – TX0,Out,Blutooth – Transmittig
+----------,PWM,----------
 2,Out,LCD
 3,Out,LCD
 4,Out,LCD
@@ -13,3 +14,8 @@ Pin #,I/O,Function
 11,Out,LCD
 12,Out,LCD
 13,,
+----------,Digital,----------
+47,In,Button – Back
+49,In,Button – Down
+51,In,Button – Up
+53,In,Button – Select
