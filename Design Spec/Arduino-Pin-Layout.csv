@@ -24,3 +24,4 @@ Pin #,I/O,Function
 52,,CLK – Dedicated Arduino Pin
 53,,CS – Dedicated Arduino Pin
 ----------,NEEDS TO BE DONE,----------
+,The Pins for the LDR,
