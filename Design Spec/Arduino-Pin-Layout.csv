@@ -1,1 +1,15 @@
 Pin #,I/O,Function
+0 – RX0,In,Blutooth – Recieving
+1 – TX0,Out,Blutooth – Transmittig
+2,Out,LCD
+3,Out,LCD
+4,Out,LCD
+5,Out,LCD
+6,,
+7,,
+8,,
+9,,
+10,,
+11,Out,LCD
+12,Out,LCD
+13,,
