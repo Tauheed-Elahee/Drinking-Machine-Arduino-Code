@@ -2,7 +2,8 @@
 ## Subsystems
 * Menu interface - LCD / Button
 * Audio Playback - SD Card / Speaker 
-* Bluetooth 
+* Bluetooth to App - HC-05
+* Motor Signal
 ## Specifications
 Refer to the [Design Spec](https://github.com/Tauheed-Elahee/Drinking-Machine-Arduino-Code/tree/master/Design%20Spec), these include:
 * Arduino pin allocation
@@ -26,3 +27,7 @@ Please use well-named camalCase variables, for example:
 * [Reference](https://github.com/SofaPirate/Chrono)
 ### Bluetooth
 * Not really a library, but refer to [this](https://create.arduino.cc/projecthub/mayooghgirish/arduino-bluetooth-basic-tutorial-d8b737) tutorial to implement bluetooth using a serial connection
+## Issues
+* Code filesize may be too large for the Mega
+* Edgecases may not be covered in production
+* Too much current drawn from the Mega
