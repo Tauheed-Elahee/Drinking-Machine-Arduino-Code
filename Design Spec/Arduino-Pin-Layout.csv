@@ -25,3 +25,4 @@ Pin #,I/O,Function
 53,,CS – Dedicated Arduino Pin
 ----------,NEEDS TO BE DONE,----------
 ,The Pins for the LDR,
+,Two analogue pins for echo and triger,
