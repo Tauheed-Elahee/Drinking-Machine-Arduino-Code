@@ -31,5 +31,5 @@ Pin #,I/O,Function
 52,,CLK – Dedicated Arduino Pin
 53,,CS – Dedicated Arduino Pin
 ----------,Analogue In,----------
-0,In,Echo,Ultra Socnic Sensor
-1,In,Trigger, Ultra Sonic Sensor
+0,In,Echo for Ultra Socnic Sensor
+1,In,Trigger for Ultra Sonic Sensor
