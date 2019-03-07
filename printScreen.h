@@ -1,4 +1,54 @@
-void printWelcome() {
+#ifndef LCD_h
+#define LCD_h
+ 
+#if ARDUINO >= 100
+  #include "Arduino.h"
+  #include "LiquidCrystal.h"
+#else
+  #include "WProgram.h"
+  #include "pins_arduino.h"
+  #include "WConstants.h"
+  #include "LiquidCrystal.h"
+#endif
+
+// Define the LCD class
+
+class LCD {
+  public:
+    LCD();
+  
+    void printWelcome();
+    void printBluetooth();
+    void printHome();
+    void printCustom();
+    void printRecipie(int amountOfA);
+    void printGame();
+    void changeOption();
+    void printGameOutcome(int result);
+  
+  private:
+    const int rs = 12;
+    const int en = 11;
+    const int d4 = 5;
+    const int d5 = 4;
+    const int d6 = 3;
+    const int d7 = 2;
+  
+    LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+  
+    void printGameOutcomeWin(int A, int B);
+    void printGameOutcomeLose();
+};
+    
+// The body of the LCD library
+
+#include "LCD.h"
+
+LCD::LCD()
+{
+}
+
+void LCD::printWelcome() {
   
 // Print the first screen of the DDED to welcome the user.
 
@@ -12,7 +62,7 @@ void printWelcome() {
   
 }
 
-void printBluetooth() {
+void LCD::printBluetooth() {
   
 
 // Print a screen telling the user that the DDED is in bluetooth mode.
@@ -25,7 +75,7 @@ void printBluetooth() {
   
 }
 
-void printHome() {
+void LCD::printHome() {
 
 // Print the Home screen
   
@@ -41,7 +91,7 @@ void printHome() {
   
 }
 
-void printCustom(int amountOfA) {
+void LCD::printCustom(int amountOfA) {
 
 // Print the custom screen
   
@@ -57,11 +107,11 @@ void printCustom(int amountOfA) {
   
 }
 
-void printRecipie() {
+void LCD::printRecipie() {
 
 }
 
-void printGame() {
+void LCD::printGame() {
 
 // Print Game Screen
   
@@ -77,7 +127,7 @@ void printGame() {
 
 
 
-void changeOption(&int currentOption) {
+void LCD::changeOption(&int currentOption) {
   
   lcd.setCursor(1, 1);
   lcd.print("");
@@ -92,29 +142,29 @@ void changeOption(&int currentOption) {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void printGameOutcome(int result) {
+void LCD::printGameOutcome(int result) {
   
   case(result) {
-    1:  this.printGameOutcomeWin(100, 0); //  A = 100 and B = 0
+    1:  printGameOutcomeWin(100, 0); //  A = 100 and B = 0
         break;
-    2:  this.printGameOutcomeWin(25, 75); //  A = 25 and B = 75
+    2:  printGameOutcomeWin(25, 75); //  A = 25 and B = 75
         break;
-    3:  this.printGameOutcomeLose();      //  A = 0 and B = 0
+    3:  printGameOutcomeLose();      //  A = 0 and B = 0
         break;
-    4:  this.printGameOutcomeWin(75, 25); //  A = 50 and B = 50
+    4:  printGameOutcomeWin(75, 25); //  A = 50 and B = 50
         break;
-    5:  this.printGameOutcomeLose();      //  A = 0 and B = 0
+    5:  printGameOutcomeLose();      //  A = 0 and B = 0
         break;
-    6:  this.printGameOutcomeWin(75, 25); //  A = 75 and B = 25
+    6:  printGameOutcomeWin(75, 25); //  A = 75 and B = 25
         break;
-    7:  this.printGameOutcomeWin(0, 100); //  A = 0 and B = 100
+    7:  printGameOutcomeWin(0, 100); //  A = 0 and B = 100
         break;
   }
   
 }
 
 
-void printGameOutcomeWin( int A, int B) {
+void LCD::printGameOutcomeWin( int A, int B) {
   
 // Print the win game screen with the correct amount for drink A and drink B
   
@@ -134,7 +184,7 @@ void printGameOutcomeWin( int A, int B) {
   
 }
 
-void printGameOutcomeLose() {
+void LCD::printGameOutcomeLose() {
   
 //  Print the lose screen
   
@@ -144,3 +194,5 @@ void printGameOutcomeLose() {
   lcd.setCursor(7, 2);
   lcd.print("Try Again!");
 }
+
+#endif
