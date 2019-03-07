@@ -1,17 +1,28 @@
 void printWelcome() {
+  
+  // Print the first screen of the DDED to welcome the user.
 
   lcd.clear();
   lcd.setCursor(0, 0);
   lcd.print("Welcome to DDED");
   lcd.setCursor(0, 2);
-  lcd.print(" use Bluetooth");
+  lcd.print("   use Bluetooth");
   lcd.setCursor(0, 3);
-  lcd.print(" use Buttons");
+  lcd.print("   use Buttons");
   
 }
 
 void printBluetooth() {
+  
 
+// Print a screen telling the user that the DDED is in bluetooth mode.
+
+  lcd.clear();
+  lcd.setCursor(0, 1);
+  lcd.print("   BLUETOOTH MODE   ");
+  lcd.setCursor(0, 2);
+  lcd.print("    **********     ");
+  
 }
 
 void printHome() {
