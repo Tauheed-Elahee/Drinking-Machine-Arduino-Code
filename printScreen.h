@@ -1,5 +1,13 @@
 void printWelcome() {
 
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Welcome to DDED");
+  lcd.setCursor(0, 2);
+  lcd.print(" use Bluetooth");
+  lcd.setCursor(0, 3);
+  lcd.print(" use Buttons");
+  
 }
 
 void printBluetooth() {
