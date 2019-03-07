@@ -174,13 +174,9 @@ void LCD::printGameOutcomeWin( int A, int B) {
   lcd.setCursor(4, 1);
   lcd.print("You Win");
   lcd.setCursor(3, 2);
-  lcd.print(A);
-  lcd.setCursor(8, 2);
-  lcd.print("part A");
+  lcd.print(A + " part A");
   lcd.setCursor(3, 3);
-  lcd.print(B);
-  lcd.setCursor(8, 3);
-  lcd.print("part B");
+  lcd.print(B + " part B");
   
 }
 
