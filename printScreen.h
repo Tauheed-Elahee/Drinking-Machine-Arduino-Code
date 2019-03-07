@@ -130,11 +130,11 @@ void LCD::printGame() {
 void LCD::changeOption(&int currentOption) {
   
   lcd.setCursor(1, 1);
-  lcd.print("");
+  lcd.print(" ");
   lcd.setCursor(1, 2);
-  lcd.print("");
+  lcd.print(" ");
   lcd.setCursor(1, 3);
-  lcd.print("");
+  lcd.print(" ");
   lcd.setCursor(1, currentOption);
   lcd.print("X");
 
