@@ -1,15 +1,9 @@
 #ifndef LCD_h
 #define LCD_h
  
-#if ARDUINO >= 100
-  #include "Arduino.h"
-  #include "LiquidCrystal.h"
-#else
-  #include "WProgram.h"
-  #include "pins_arduino.h"
-  #include "WConstants.h"
-  #include "LiquidCrystal.h"
-#endif
+#include "LiquidCrystal.h"
+
+#include "LCD.h"
 
 // Define the LCD class
 
@@ -23,26 +17,24 @@ class LCD {
     void printCustom();
     void printRecipie(int amountOfA);
     void printGame();
-    void changeOption();
+    void updateSelectionToOption();
     void printGameOutcome(int result);
   
   private:
-    const int rs = 12;
+    const int rs = 12; // put all constants into a pnLayout.h header file for better modulation
     const int en = 11;
     const int d4 = 5;
     const int d5 = 4;
     const int d6 = 3;
     const int d7 = 2;
   
-    LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+    LiquidCrystal lcd(rs, en, d4, d5, d6, d7); // put this into constructor
   
     void printGameOutcomeWin(int A, int B);
     void printGameOutcomeLose();
 };
     
 // The body of the LCD library
-
-#include "LCD.h"
 
 LCD::LCD()
 {
@@ -88,6 +80,8 @@ void LCD::printHome() {
   lcd.print("   Recipie");
   lcd.setCursor(0, 3);
   lcd.print("   Game");
+ 
+  lcd.updateSelectionToOption(1);
   
 }
 
@@ -126,8 +120,10 @@ void LCD::printGame() {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+// make LCD::moveSelection(String direction);
 
-void LCD::changeOption(&int currentOption) {
+
+void LCD::updateSelectionToOption(int currentOption) {
   
   lcd.setCursor(1, 1);
   lcd.print(" ");
