@@ -1,6 +1,7 @@
 #ifndef LCD_h
 #define LCD_h
- 
+
+#include "pinLayout.h"
 #include "LiquidCrystal.h"
 
 #include "LCD.h"
@@ -9,38 +10,35 @@
 
 class LCD {
   public:
-    LCD();
+   LCD();
   
-    void printWelcome();
-    void printBluetooth();
-    void printHome();
-    void printCustom();
-    void printRecipie(int amountOfA);
-    void printGame();
-    void updateSelectionToOption();
-    void printGameOutcome(int result);
+   void printWelcomeScreen();
+   void printBluetoothScreen();
+   void printHomeScreen();
+   void printCustomScreen();
+   void printRecipieScreen(int amountOfA);
+   void printGameScreen();
+   void printGameOutcomeScreen(int result);
+   void moveSelection(String direction);
   
   private:
-    const int rs = 12; // put all constants into a pnLayout.h header file for better modulation
-    const int en = 11;
-    const int d4 = 5;
-    const int d5 = 4;
-    const int d6 = 3;
-    const int d7 = 2;
-  
-    LiquidCrystal lcd(rs, en, d4, d5, d6, d7); // put this into constructor
-  
-    void printGameOutcomeWin(int A, int B);
-    void printGameOutcomeLose();
+   void updateSelectionToOption(int currentOption);
+   void printGameOutcomeWin(int A, int B);
+   void printGameOutcomeLose();
+
+   LiquidCrystal lcd(int rs, int en, int d4, int d5, int d6, int d7);
+   int currentOption;
 };
     
 // The body of the LCD library
 
 LCD::LCD()
 {
+  LiquidCrystal lcd(rs, en, d4, d5, d6, d7); // put this into constructor
+  lcd.begin(20, 4);
 }
 
-void LCD::printWelcome() {
+void LCD::printWelcomeScreen() {
   
 // Print the first screen of the DDED to welcome the user.
 
@@ -54,7 +52,7 @@ void LCD::printWelcome() {
   
 }
 
-void LCD::printBluetooth() {
+void LCD::printBluetoothScreen() {
   
 
 // Print a screen telling the user that the DDED is in bluetooth mode.
@@ -67,7 +65,7 @@ void LCD::printBluetooth() {
   
 }
 
-void LCD::printHome() {
+void LCD::printHomeScreen() {
 
 // Print the Home screen
   
@@ -85,7 +83,7 @@ void LCD::printHome() {
   
 }
 
-void LCD::printCustom(int amountOfA) {
+void LCD::printCustomScreen(int amountOfA) {
 
 // Print the custom screen
   
@@ -101,7 +99,7 @@ void LCD::printCustom(int amountOfA) {
   
 }
 
-void LCD::printRecipie() {
+void LCD::printRecipieScreen() {
 
 }
 
@@ -120,7 +118,25 @@ void LCD::printGame() {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-// make LCD::moveSelection(String direction);
+LCD::moveSelection(String direction) {
+
+  if (direction == "Down") {
+    if (currentOption == 3) {
+      currentOption == 1;
+    } else {
+      curretnOption++;
+    }
+  } else if (direction == "Up") {
+    if (currentOption == 1) {
+      currentOption == 3;
+    } else {
+      curretnOption--;
+    }
+  }
+
+  updateSelectionToOption(currentOption);
+
+}
 
 
 void LCD::updateSelectionToOption(int currentOption) {
@@ -138,7 +154,7 @@ void LCD::updateSelectionToOption(int currentOption) {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void LCD::printGameOutcome(int result) {
+void LCD::printGameOutcomeScreen(int result) {
   
   case(result) {
     1:  printGameOutcomeWin(100, 0); //  A = 100 and B = 0
