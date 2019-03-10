@@ -11,6 +11,13 @@ Pin #,I/O,Function
 12,Out,LCD
 13,Out,Speaker – Output
 ----------,Digital,----------
+22,In,Plinko Bin 1
+23,In,Plinko Bin 2
+24,In,Plinko Bin 3
+25,In,Plinko Bin 4
+26,In,Plinko Bin 5
+27,In,Plinko Bin 6
+29,In,Plinko Bin 7
 30,In,Button – Back
 31,In,Button – Down
 32,In,Button – Up
@@ -23,5 +30,6 @@ Pin #,I/O,Function
 51,,MOSI – Dedicated Arduino Pin
 52,,CLK – Dedicated Arduino Pin
 53,,CS – Dedicated Arduino Pin
-----------,NEEDS TO BE DONE,----------
-,The Pins for the LDR,
+----------,Analogue In,----------
+0,In,Ultra Socnic Sensor – Echo
+1,In,Ultra Sonic Sensor – Trigger
