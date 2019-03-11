@@ -11,7 +11,7 @@ class Motor{
  public:
   Motor();
 
-  void pour(int amountOfA, int amountOfB);
+  void pour(int amountOfA, int amountOfB); // Mixing and pouring drinks should be seperate functions
 
 private:
   void dispense(string option, int amountOfA);
