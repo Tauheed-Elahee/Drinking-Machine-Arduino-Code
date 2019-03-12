@@ -1,6 +1,8 @@
 #ifndef LCD_h
 #define LCD_h
 
+#include <string>
+
 #include "pinLayout.h"
 #include "LiquidCrystal.h"
 
@@ -19,7 +21,7 @@ class LCD {
    void printRecipieScreen(int amountOfA);
    void printGameScreen();
    void printGameOutcomeScreen(int result);
-   void moveSelection(String direction);
+   void moveSelection(string direction);
   
   private:
    void updateSelectionToOption(int currentOption);
