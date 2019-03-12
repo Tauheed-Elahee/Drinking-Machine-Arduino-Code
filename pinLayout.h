@@ -74,4 +74,58 @@ This file includes all the constants mapped to the Arduino Pins
 #define echo = 0;
 #define trigger = 1;
 
+
+
+// Define the pinLayout class
+
+class pinLayout {
+	public:
+	pinLayout();
+	setup();
+	
+	private:
+}
+
+// Body of the pinLayout class
+
+void pinLayout::pinLayout()
+{
+}
+
+void pinLayout::setup()
+{
+	
+	// unknown for bluetooth
+	
+	pinMode(rs, OUTPUT);
+	pinMode(en, OUTPUT);
+	pinMode(d4, OUTPUT);
+	pinMode(d5, OUTPUT);
+	pinMode(d6, OUTPUT);
+	pinMode(d7, OUTPUT);
+	
+	pinMode(speakerOut, OUTPUT);
+	
+	pinMode(plinkoBin1, INPUT);
+	pinMode(plinkoBin2, INPUT);
+	pinMode(plinkoBin3, INPUT);
+	pinMode(plinkoBin4, INPUT);
+	pinMode(plinkoBin5, INPUT);
+	pinMode(plinkoBin6, INPUT);
+	pinMode(plinkoBin7, INPUT);
+	
+	pinMode(buttonBack, INPUT);
+	pinMode(buttonDown, INPUT);
+	pinMode(buttonUp, INPUT);
+	pinMode(buttonSelect, INPUT);
+	
+	pinMode(motor1TurnLeft, OUTPUT);
+	pinMode(motor1TurnRight, OUTPUT);
+	pinMode(motor2TurnLeft, OUTPUT);
+	pinMode(motor2TurnRight, OUTPUT);
+	
+	// SD card pins are set by the SD header file
+	
+}
+
 #endif
