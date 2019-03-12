@@ -10,6 +10,8 @@
 
 // Define the LCD class
 
+// Add a function that returns the selected option back to the main arduino file
+
 class LCD {
   public:
    LCD();
