@@ -1,131 +1,212 @@
-/*
+#ifndef LCD_h
+#define LCD_h
 
-This file includes all the constants mapped to the Arduino Pins
-
- */
-
-
-#ifndef pinLayout_h
-#define pinLayout_h
+#include <string>
 
 #include "pinLayout.h"
+#include "LiquidCrystal.h"
 
+#include "LCD.h"
 
+// Define the LCD class
 
-// For Bluetooth
-#define bluetoothRecieving = 0;
-#define bluetoothTransmitting = 1;
+class LCD {
+  public:
+   LCD();
+  
+   void printWelcomeScreen();
+   void printBluetoothScreen();
+   void printHomeScreen();
+   void printCustomScreen();
+   void printRecipieScreen(int amountOfA);
+   void printGameScreen();
+   void printGameOutcomeScreen(int result);
+   void moveSelection(string direction);
+  
+  private:
+   void updateSelectionToOption(int currentOption);
+   void printGameOutcomeWin(int A, int B);
+   void printGameOutcomeLose();
 
+   LiquidCrystal lcd(int rs, int en, int d4, int d5, int d6, int d7);
+   int currentOption;
+};
+    
+// The body of the LCD library
 
-
-// For Liquid Crystal Display
-#define rs = 12; // Reset
-#define en = 11; // Enable
-#define d4 = 5;  // Data pin 4
-#define d5 = 4;  // Data pin 5
-#define d6 = 3;  // Data pin 6
-#define d7 = 2;  // Data pin 7
-
-
-
-// Speaker
-#define speakerOut = 13;
-
-// Plinko Bin Detection
-#define plinkoBin1 = 22;
-#define plinkoBin2 = 23;
-#define plinkoBin3 = 24;
-#define plinkoBin4 = 25;
-#define plinkoBin5 = 26;
-#define plinkoBin6 = 27;
-#define plinkoBin7 = 28;
-
-
-
-// Buttons
-#define buttonBack = 30;
-#define buttonDown = 31;
-#define buttonUp = 32;
-#define buttonSelect = 33;
-
-
-
-// Motors
-
-// Motor 1
-#define motor1TurnRight = 40;
-#define motor1TurnLeft = 41;
-
-// Motor 2
-#define motor2TurnRight = 42;
-#define motor2TurnLeft = 43;
-
-
-
-// SD Card
-#define miso = 50;
-#define mosi = 51;
-#define clk = 52;
-#define cs = 53;
-
-
-
-// Ultra Sonic Sensor
-#define echo = 0;
-#define trigger = 1;
-
-
-
-// Define the pinLayout class
-
-class pinLayout {
-	public:
-	pinLayout();
-	setup();
-	
-	private:
+LCD::LCD()
+{
+  pinLayout pin();
+  pin.setup();
+  
+  LiquidCrystal lcd(rs, en, d4, d5, d6, d7); // put this into constructor
+  lcd.begin(20, 4);
+  currentOption = 1;
 }
 
-// Body of the pinLayout class
+void LCD::printWelcomeScreen() {
+  
+// Print the first screen of the DDED to welcome the user.
 
-void pinLayout::pinLayout()
-{
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Welcome to DDED");
+  lcd.setCursor(0, 2);
+  lcd.print("   use Bluetooth");
+  lcd.setCursor(0, 3);
+  lcd.print("   use Buttons");
+  
 }
 
-void pinLayout::setup()
-{
-	
-	// unknown for bluetooth
-	
-	pinMode(rs, OUTPUT);
-	pinMode(en, OUTPUT);
-	pinMode(d4, OUTPUT);
-	pinMode(d5, OUTPUT);
-	pinMode(d6, OUTPUT);
-	pinMode(d7, OUTPUT);
-	
-	pinMode(speakerOut, OUTPUT);
-	
-	pinMode(plinkoBin1, INPUT);
-	pinMode(plinkoBin2, INPUT);
-	pinMode(plinkoBin3, INPUT);
-	pinMode(plinkoBin4, INPUT);
-	pinMode(plinkoBin5, INPUT);
-	pinMode(plinkoBin6, INPUT);
-	pinMode(plinkoBin7, INPUT);
-	
-	pinMode(buttonBack, INPUT);
-	pinMode(buttonDown, INPUT);
-	pinMode(buttonUp, INPUT);
-	pinMode(buttonSelect, INPUT);
-	
-	pinMode(motor1TurnLeft, OUTPUT);
-	pinMode(motor1TurnRight, OUTPUT);
-	pinMode(motor2TurnLeft, OUTPUT);
-	pinMode(motor2TurnRight, OUTPUT);
-	
-	// SD card pins are set by the SD header file
-	
+void LCD::printBluetoothScreen() {
+  
+
+// Print a screen telling the user that the DDED is in bluetooth mode.
+
+  lcd.clear();
+  lcd.setCursor(0, 1);
+  lcd.print("   BLUETOOTH MODE   ");
+  lcd.setCursor(0, 2);
+  lcd.print("    **********     ");
+  
+}
+
+void LCD::printHomeScreen() {
+
+// Print the Home screen
+  
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Welcome to DDED!");
+  lcd.setCursor(0, 1);
+  lcd.print("   Custom");
+  lcd.setCursor(0, 2);
+  lcd.print("   Recipie");
+  lcd.setCursor(0, 3);
+  lcd.print("   Game");
+ 
+  lcd.updateSelectionToOption(1);
+  
+}
+
+void LCD::printCustomScreen(int amountOfA) {
+
+// Print the custom screen
+  
+  lcd.clear();
+  
+  for (int i=0; i<amountOfA; i++) {
+    lcd.setCursor(i, 1);
+    lcd.print("-");
+  }
+  
+  lcd.setCursor(0, 2);
+  lcd.print(amountofA);
+  
+}
+
+void LCD::printRecipieScreen() {
+
+}
+
+void LCD::printGame() {
+
+// Print Game Screen
+  
+  lcd.clear();
+  lcd.setCursor(0, 1);
+  lcd.print(" Welcome to Plinko ");
+  lcd.setCursor(0, 2);
+  lcd.print("   Please Insert Coin   ");
+  
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+LCD::moveSelection(string direction) {
+
+  if (direction == "Down") {
+    if (currentOption == 3) {
+      currentOption = 1;
+    } else {
+      curretnOption++;
+    }
+  } else if (direction == "Up") {
+    if (currentOption == 1) {
+      currentOption = 3;
+    } else {
+      curretnOption--;
+    }
+  }
+
+  updateSelectionToOption(currentOption);
+
+}
+
+
+void LCD::updateSelectionToOption(int currentOption) {
+  
+  lcd.setCursor(1, 1);
+  lcd.print(" ");
+  lcd.setCursor(1, 2);
+  lcd.print(" ");
+  lcd.setCursor(1, 3);
+  lcd.print(" ");
+  lcd.setCursor(1, currentOption);
+  lcd.print("X");
+
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void LCD::printGameOutcomeScreen(int result) {
+  
+  case(result) {
+    1:  printGameOutcomeWin(100, 0); //  A = 100 and B = 0
+        break;
+    2:  printGameOutcomeWin(25, 75); //  A = 25 and B = 75
+        break;
+    3:  printGameOutcomeLose();      //  A = 0 and B = 0
+        break;
+    4:  printGameOutcomeWin(75, 25); //  A = 50 and B = 50
+        break;
+    5:  printGameOutcomeLose();      //  A = 0 and B = 0
+        break;
+    6:  printGameOutcomeWin(75, 25); //  A = 75 and B = 25
+        break;
+    7:  printGameOutcomeWin(0, 100); //  A = 0 and B = 100
+        break;
+  }
+  
+}
+
+
+void LCD::printGameOutcomeWin( int A, int B) {
+  
+// Print the win game screen with the correct amount for drink A and drink B
+  
+  lcd.clear();
+  lcd.setCursor(2, 0);
+  lcd.print("Game Result");
+  lcd.setCursor(4, 1);
+  lcd.print("You Win");
+  lcd.setCursor(3, 2);
+  lcd.print(A.toChar() + " part A");
+  lcd.setCursor(3, 3);
+  lcd.print(B.toChar() + " part B");
+  
+}
+
+void LCD::printGameOutcomeLose() {
+  
+//  Print the lose screen
+  
+  lcd.clear();
+  lcd.setCursor(7, 1);
+  lcd.print("You Lose!");
+  lcd.setCursor(7, 2);
+  lcd.print("Try Again!");
 }
 
 #endif
