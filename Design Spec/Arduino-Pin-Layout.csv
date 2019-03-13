@@ -18,6 +18,7 @@ Pin #,I/O,Function
 26,In,Plinko – Bin 5
 27,In,Plinko – Bin 6
 28,In,Plinko – Bin 7
+29,Out,Plinko – Enable Pin
 30,In,Button – Back
 31,In,Button – Down
 32,In,Button – Up
