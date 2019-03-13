@@ -10,6 +10,38 @@
 
 // Define the LCD class
 
+
+
+
+
+
+
+// For LCD.h
+
+#define rs 2
+#define en 3
+#define d4 4
+#define d5 5
+#define d6 11
+#define d7 12
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class LCD {
   public:
    LCD();
