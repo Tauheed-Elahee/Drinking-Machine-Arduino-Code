@@ -1,4 +1,4 @@
-#inculde <pinLayout.h>
+#inculde <PinLayout.h>
 #include <LCD.h>
 
 //Global Variables
