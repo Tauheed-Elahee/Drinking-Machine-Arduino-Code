@@ -7,6 +7,9 @@
 
 LCD::LCD()
 {
+  PinLayout pinLayout;
+  pinLayout.setup();
+  
   LiquidCrystal lcd(lcdReset, lcdEnable, lcdDataLine4, lcdDataLine4, lcdDataLine4, lcdDataLine4); // put this into constructor
   lcd.begin(20, 4);
 }
