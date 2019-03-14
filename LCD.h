@@ -38,7 +38,7 @@ class LCD {
 
 LCD::LCD()
 {
-  LiquidCrystal lcd(rs, en, d4, d5, d6, d7); // put this into constructor
+  LiquidCrystal lcd(lcdReset, lcdEnable, lcdDataLine4, lcdDataLine4, lcdDataLine4, lcdDataLine4); // put this into constructor
   lcd.begin(20, 4);
 }
 
