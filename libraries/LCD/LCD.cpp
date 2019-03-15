@@ -1,6 +1,6 @@
 
-#include "PinLayout.h"
-#include "LiquidCrystal.h"
+#include "../PinLayout/PinLayout.h"
+#include "../LiquidCrystal/LiquidCrystal.h"
 #include "LCD.h"
 
 // The body of the LCD library
@@ -10,8 +10,10 @@ LCD::LCD()
   PinLayout pinLayout;
   pinLayout.setup();
   
-  LiquidCrystal lcd(lcdReset, lcdEnable, lcdDataLine4, lcdDataLine4, lcdDataLine4, lcdDataLine4); // put this into constructor
+  this->lcd = LiquidCrystal(lcdReset, lcdEnable, lcdDataLine4, lcdDataLine4, lcdDataLine4, lcdDataLine4);
   lcd.begin(20, 4);
+  
+  currentOption = 1;
 }
 
 void LCD::printWelcomeScreen() {
@@ -71,7 +73,7 @@ void LCD::printCustomScreen(int amountOfA) {
   }
   
   lcd.setCursor(0, 2);
-  lcd.print(amountofA);
+  lcd.print(amountOfA);
   
 }
 
@@ -79,7 +81,7 @@ void LCD::printRecipieScreen() {
 
 }
 
-void LCD::printGame() {
+void LCD::printGameScreen() {
 
 // Print Game Screen
   
@@ -155,7 +157,11 @@ void LCD::printGameOutcomeScreen(int result) {
 void LCD::printGameOutcomeWin( int A, int B) {
   
 // Print the win game screen with the correct amount for drink A and drink B
-  
+    
+    int test = A;
+    
+    char testC = test.toChar();
+    
   lcd.clear();
   lcd.setCursor(2, 0);
   lcd.print("Game Result");
