@@ -4,8 +4,9 @@
 
 #include <string>
 
-#include "PinLayout.h"
-#include "LiquidCrystal.h"
+#include "../PinLayout/PinLayout.h"
+#include "../LiquidCrystal/LiquidCrystal.h"
+#include <string>
 
 // Define the LCD class
 
@@ -18,8 +19,8 @@ class LCD {
    void printWelcomeScreen();
    void printBluetoothScreen();
    void printHomeScreen();
-   void printCustomScreen();
-   void printRecipieScreen(int amountOfA);
+   void printCustomScreen(int amountOfA);
+   void printRecipieScreen();
    void printGameScreen();
    void printGameOutcomeScreen(int result);
    void moveSelection(string direction);
@@ -29,7 +30,7 @@ class LCD {
    void printGameOutcomeWin(int A, int B);
    void printGameOutcomeLose();
 
-   LiquidCrystal lcd(int rs, int en, int d4, int d5, int d6, int d7);
+   LiquidCrystal lcd;
    int currentOption;
 };
 
