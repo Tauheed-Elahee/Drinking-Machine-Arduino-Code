@@ -1,0 +1,27 @@
+#######################################
+# Syntax Coloring Map For Fader
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+LCD	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+printWelcomeScreen    KEYWORD2
+printBluetoothScreen    KEYWORD2
+printHomeScreen    KEYWORD2
+printCustomScreen    KEYWORD2
+printRecipieScreen    KEYWORD2
+printGameScreen    KEYWORD2
+printGameOutcomeScreen    KEYWORD2
+moveSelection    KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
