@@ -3,8 +3,10 @@
 #include "../arduino/hardware/arduino/cores/arduino/WString.h"
 #include "../arduino/hardware/arduino/cores/arduino/Arduino.h"
 
+#include "../arduino/libraries/LiquidCrystal/LiquidCrystal.h"
+
 #include "../PinLayout/PinLayout.h"
-#include "../LiquidCrystal/LiquidCrystal.h"
+
 #include "LCD.h"
 
 // The body of the LCD library

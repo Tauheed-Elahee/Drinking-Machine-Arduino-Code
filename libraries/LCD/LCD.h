@@ -5,8 +5,10 @@
 #include "../arduino/hardware/arduino/cores/arduino/WString.h"
 #include "../arduino/hardware/arduino/cores/arduino/Arduino.h"
 
+#include "../arduino/libraries/LiquidCrystal/LiquidCrystal.h"
+
 #include "../PinLayout/PinLayout.h"
-#include "../LiquidCrystal/LiquidCrystal.h"
+
 
 // Define the LCD class
 
