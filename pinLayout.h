@@ -75,6 +75,3 @@ This file includes all the constants mapped to the Arduino Pins
 #define trigger 1;
 
 #endif
-
-
-// Testing.
