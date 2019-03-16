@@ -1,12 +1,12 @@
-
 #ifndef LCD_h
 #define LCD_h
 
-#include <string>
+#include "../arduino/hardware/arduino/cores/arduino/WCharacter.h"
+#include "../arduino/hardware/arduino/cores/arduino/WString.h"
+#include "../arduino/hardware/arduino/cores/arduino/Arduino.h"
 
 #include "../PinLayout/PinLayout.h"
 #include "../LiquidCrystal/LiquidCrystal.h"
-#include <string>
 
 // Define the LCD class
 
@@ -23,7 +23,7 @@ class LCD {
    void printRecipieScreen();
    void printGameScreen();
    void printGameOutcomeScreen(int result);
-   void moveSelection(string direction);
+   void moveSelection(const char direction[]);
   
   private:
    void updateSelectionToOption(int currentOption);

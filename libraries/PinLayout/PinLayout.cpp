@@ -1,5 +1,8 @@
 
-#include "Arduino.h"
+#include "../arduino/hardware/arduino/cores/arduino/WCharacter.h"
+#include "../arduino/hardware/arduino/cores/arduino/WString.h"
+#include "../arduino/hardware/arduino/cores/arduino/Arduino.h"
+
 #include "PinLayout.h"
 
 

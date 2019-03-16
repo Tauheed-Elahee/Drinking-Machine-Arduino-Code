@@ -8,7 +8,9 @@ This file includes all the constants mapped to the Arduino Pins
 #ifndef PinLayout_h
 #define PinLayout_h
 
-#include "Arduino.h"
+#include "../arduino/hardware/arduino/cores/arduino/WCharacter.h"
+#include "../arduino/hardware/arduino/cores/arduino/WString.h"
+#include "../arduino/hardware/arduino/cores/arduino/Arduino.h"
 
 
 // For Bluetooth
