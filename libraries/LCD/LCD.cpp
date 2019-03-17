@@ -11,12 +11,12 @@
 
 // The body of the LCD library
 
-LCD::LCD()
+LCD::LCD() : lcd(lcdReset, lcdEnable, lcdDataLine4, lcdDataLine5, lcdDataLine6, lcdDataLine7)
 {
   PinLayout pinLayout;
   pinLayout.setup();
   
-  this->lcd = LiquidCrystal(lcdReset, lcdEnable, lcdDataLine4, lcdDataLine4, lcdDataLine4, lcdDataLine4);
+  
   this->lcd.begin(20, 4);
   
   this->currentOption = 1;
@@ -102,7 +102,7 @@ void LCD::printGameScreen() {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-void LCD::moveSelection(const char direction[]); {
+void LCD::moveSelection(String direction) {
 
   if (direction == "Down") {
     if (this->currentOption == 3) {

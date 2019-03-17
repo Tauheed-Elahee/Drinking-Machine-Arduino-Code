@@ -25,7 +25,7 @@ class LCD {
    void printRecipieScreen();
    void printGameScreen();
    void printGameOutcomeScreen(int result);
-   void moveSelection(const char direction[]);
+   void moveSelection(String direction);
   
   private:
    void updateSelectionToOption(int currentOption);
