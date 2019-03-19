@@ -1,9 +1,9 @@
 # D.D.E.D Contributers Guide
 ## Subsystems
-* Menu interface - LCD / Button
-* Audio Playback - SD Card / Speaker 
-* Bluetooth to App - HC-05
-* Motor Signal
+* Physical Menu Interface - LCD / Button UX - Tauheed
+* App Menu Interface - Bluetooth / Android - Rishi
+* Drink Dispensing - H-Bridge Control - Seth
+* Audio Playback - SD Card / Speaker Driver - Rishi/Brandon
 ## Specifications
 Refer to the [Design Spec](https://github.com/Tauheed-Elahee/Drinking-Machine-Arduino-Code/tree/master/Design%20Spec), these include:
 * Arduino pin allocation
