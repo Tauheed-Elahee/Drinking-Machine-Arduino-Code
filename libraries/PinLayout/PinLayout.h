@@ -8,7 +8,7 @@ This file includes all the constants mapped to the Arduino Pins
 #ifndef PinLayout_h
 #define PinLayout_h
 
-#include "Arduino.h"
+#include <Arduino.h>
 
 
 // For Bluetooth
@@ -20,10 +20,10 @@ This file includes all the constants mapped to the Arduino Pins
 // For Liquid Crystal Display
 #define lcdReset 12 // Reset
 #define lcdEnable 11 // Enable
-#define lcdDataLine4 5  // Data pin 4
-#define lcdDataLine5 4  // Data pin 5
-#define lcdDataLine6 3  // Data pin 6
-#define lcdDataLine7 2  // Data pin 7
+#define lcdDataLine4 2  // Data pin 4
+#define lcdDataLine5 3  // Data pin 5
+#define lcdDataLine6 4  // Data pin 6
+#define lcdDataLine7 5  // Data pin 7
 
 
 

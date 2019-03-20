@@ -1,1 +1,2 @@
-Place libraries here.
+When cloning the repo, make sure to put any updated libraries into the
+Arduino/libraries folder if using the IDE.
