@@ -1,16 +1,13 @@
-
-#include "../PinLayout/PinLayout.h"
-#include "../LiquidCrystal/LiquidCrystal.h"
 #include "LCD.h"
+#include "PinLayout.h"
+#include <LiquidCrystal.h>
 
 // The body of the LCD library
 
-LCD::LCD()
+LCD::LCD() : lcd(lcdReset, lcdEnable, lcdDataLine4, lcdDataLine5, lcdDataLine6, lcdDataLine7)
 {
   PinLayout pinLayout;
   pinLayout.setup();
-  
-  this->lcd = LiquidCrystal(lcdReset, lcdEnable, lcdDataLine4, lcdDataLine4, lcdDataLine4, lcdDataLine4);
   lcd.begin(20, 4);
   
   currentOption = 1;
@@ -57,7 +54,7 @@ void LCD::printHomeScreen() {
   lcd.setCursor(0, 3);
   lcd.print("   Game");
  
-  lcd.updateSelectionToOption(1);
+  updateSelectionToOption(1);
   
 }
 
@@ -96,24 +93,22 @@ void LCD::printGameScreen() {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-LCD::moveSelection(String direction) {
+void LCD::moveSelection(String direction) {
 
   if (direction == "Down") {
     if (currentOption == 3) {
       currentOption == 1;
     } else {
-      curretnOption++;
+      currentOption++;
     }
   } else if (direction == "Up") {
     if (currentOption == 1) {
       currentOption == 3;
     } else {
-      curretnOption--;
+      currentOption--;
     }
   }
-
   updateSelectionToOption(currentOption);
-
 }
 
 
@@ -134,20 +129,20 @@ void LCD::updateSelectionToOption(int currentOption) {
 
 void LCD::printGameOutcomeScreen(int result) {
   
-  case(result) {
-    1:  printGameOutcomeWin(100, 0); //  A = 100 and B = 0
+  switch(result) {
+    case 1:  printGameOutcomeWin(100, 0); //  A = 100 and B = 0
         break;
-    2:  printGameOutcomeWin(25, 75); //  A = 25 and B = 75
+    case 2:  printGameOutcomeWin(25, 75); //  A = 25 and B = 75
         break;
-    3:  printGameOutcomeLose();      //  A = 0 and B = 0
+    case 3:  printGameOutcomeLose();      //  A = 0 and B = 0
         break;
-    4:  printGameOutcomeWin(75, 25); //  A = 50 and B = 50
+    case 4:  printGameOutcomeWin(75, 25); //  A = 50 and B = 50
         break;
-    5:  printGameOutcomeLose();      //  A = 0 and B = 0
+    case 5:  printGameOutcomeLose();      //  A = 0 and B = 0
         break;
-    6:  printGameOutcomeWin(75, 25); //  A = 75 and B = 25
+    case 6:  printGameOutcomeWin(75, 25); //  A = 75 and B = 25
         break;
-    7:  printGameOutcomeWin(0, 100); //  A = 0 and B = 100
+    case 7:  printGameOutcomeWin(0, 100); //  A = 0 and B = 100
         break;
   }
   
@@ -157,10 +152,8 @@ void LCD::printGameOutcomeScreen(int result) {
 void LCD::printGameOutcomeWin( int A, int B) {
   
 // Print the win game screen with the correct amount for drink A and drink B
-    
-    int test = A;
-    
-    char testC = test.toChar();
+  char a = A;
+  char b = B;
     
   lcd.clear();
   lcd.setCursor(2, 0);
@@ -168,9 +161,9 @@ void LCD::printGameOutcomeWin( int A, int B) {
   lcd.setCursor(4, 1);
   lcd.print("You Win");
   lcd.setCursor(3, 2);
-  lcd.print(A.toChar() + " part A");
+  lcd.print(a + " part A");
   lcd.setCursor(3, 3);
-  lcd.print(B.toChar() + " part B");
+  lcd.print(b + " part B");
   
 }
 
