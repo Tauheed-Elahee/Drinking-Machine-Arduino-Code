@@ -1,12 +1,12 @@
 #ifndef LCD_h
 #define LCD_h
 
-#include "../arduino/hardware/arduino/cores/arduino/WString.h"
-#include "../arduino/hardware/arduino/cores/arduino/Arduino.h"
+#include "WString.h"
+#include "Arduino.h"
 
-#include "../arduino/libraries/LiquidCrystal/LiquidCrystal.h"
+#include "LiquidCrystal.h"
 
-#include "../PinLayout/PinLayout.h"
+#include "PinLayout.h"
 
 
 // Define the LCD class
