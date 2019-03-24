@@ -1,5 +1,3 @@
-
-#include "WCharacter.h"
 #include "WString.h"
 #include "Arduino.h"
 
