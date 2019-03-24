@@ -100,6 +100,10 @@ void LCD::printGameScreen() {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+int	LCD::getSelection()	{
+	return this->currentOption;
+}
+
 void LCD::moveSelection(String direction) {
 
   if (direction == "Down") {
