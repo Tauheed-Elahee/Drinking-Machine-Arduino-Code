@@ -1,10 +1,9 @@
+#include "WString.h"
+#include "Arduino.h"
 
-#include "../arduino/hardware/arduino/cores/arduino/WString.h"
-#include "../arduino/hardware/arduino/cores/arduino/Arduino.h"
+#include "LiquidCrystal.h"
 
-#include "../arduino/libraries/LiquidCrystal/LiquidCrystal.h"
-
-#include "../PinLayout/PinLayout.h"
+#include "PinLayout.h"
 
 #include "LCD.h"
 
