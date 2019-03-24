@@ -29,7 +29,7 @@ This file includes all the constants mapped to the Arduino Pins
 
 
 // Speaker
-#define speakerOutput 13
+#define speakerOutput 10
 
 // Plinko Bin Detection
 #define plinkoEnable 22
