@@ -149,7 +149,7 @@ void LCD::printGameOutcomeScreen(int result) {
         break;
     case 3:  printGameOutcomeLose();      //  A = 0 and B = 0
         break;
-    case 4:  printGameOutcomeWin(75, 25); //  A = 50 and B = 50
+    case 4:  printGameOutcomeWin(50, 50); //  A = 50 and B = 50
         break;
     case 5:  printGameOutcomeLose();      //  A = 0 and B = 0
         break;
