@@ -10,6 +10,13 @@
   #include "WProgram.h"
 #endif
 
+#define flow_out 10000
+#define flow_in 500
+#define flow_quarter_small 2500
+#define flow_quarter_big 7500
+#define flow_half 5000
+#define delaytime 100
+
 class pumpControl
 {
   public:
@@ -24,123 +31,110 @@ class pumpControl
   void Dispense_Nothing();
 
   private:
-  int motoroutA;
-  int motorinA;
-  int motoroutB;
-  int motorinB;
-  int flow_out;
-  int flow_in;
-  int flow_quarter_small;
-  int flow_quarter_big;
-  int flow_half;
-  int delaytime;
+  int motorAOut;
+  int motorAIn;
+  int motorBOut;
+  int motorBIn;
 };
 #endif
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include "Arduino.h"
+#include "pump_Control.h"
 // ELEC 3907: cpp file to get pumps going in skeleton
 // Seth Thompson: 101031310
 
-#include "Arduino.h"
-#include "pump_Control.h"
-
-pumpControl::pumpControl(int MotorOutA, int MotorInA, int MotorOutB, int MotorInB) 
+pumpControl::pumpControl(int motorAOut, int motorAIn, int motorBOut, int motorBIn) 
 {
-  motoroutA = MotorOutA;
-  motorinA = MotorInA;
-  motoroutB = MotorOutB;
-  motorinB = MotorInB;
-  flow_out = 10000;
-  flow_in = 500;
-  flow_quarter_small = 2500;
-  flow_quarter_big = 7500;
-  flow_half = 5000;
-  delaytime = 100;
+  motorAOut = motorAOut;
+  motorAIn = motorAIn;
+  motorBOut = motorBOut;
+  motorBIn = motorBIn;
 }
 
 void pumpControl::Dispense_Drink_A()
 {
   // Add code once flow rate is determined
-  digitalWrite(motoroutA,HIGH);
+  digitalWrite(motorAOut,HIGH);
   delay(flow_out);
-  digitalWrite(motoroutA,LOW);
+  digitalWrite(motorAOut,LOW);
   delay(delaytime);
-  digitalWrite(motorinA,HIGH);
+  digitalWrite(motorAIn,HIGH);
   delay(flow_in);
-  digitalWrite(motorinA,LOW);
+  digitalWrite(motorAIn,LOW);
 }
 
 void pumpControl::Dispense_Drink_B()
 {
   // Add code once flow rate is determined
-  digitalWrite(motoroutB,HIGH);
+  digitalWrite(motorBOut,HIGH);
   delay(flow_out);
-  digitalWrite(motoroutB,LOW);
+  digitalWrite(motorBOut,LOW);
   delay(delaytime);
-  digitalWrite(motorinB,HIGH);
+  digitalWrite(motorBIn,HIGH);
   delay(flow_in);
-  digitalWrite(motorinB,LOW);
+  digitalWrite(motorBIn,LOW);
 }
 
 void pumpControl::Dispense_1_To_4()
 {
   //1/4 A, 3/4 B
-  digitalWrite(motoroutA,HIGH);
+  digitalWrite(motorAOut,HIGH);
   delay(flow_quarter_small);
-  digitalWrite(motoroutA,LOW);
+  digitalWrite(motorAOut,LOW);
   delay(delaytime);
-  digitalWrite(motorinA,HIGH);
+  digitalWrite(motorAIn,HIGH);
   delay(flow_in);
-  digitalWrite(motorinA,LOW);
+  digitalWrite(motorAIn,LOW);
 
-  digitalWrite(motoroutB,HIGH);
+  digitalWrite(motorBOut,HIGH);
   delay(flow_quarter_big);
-  digitalWrite(motoroutB,LOW);
+  digitalWrite(motorBOut,LOW);
   delay(delaytime);
-  digitalWrite(motorinB,HIGH);
+  digitalWrite(motorBIn,HIGH);
   delay(flow_in);
-  digitalWrite(motorinB,LOW);
+  digitalWrite(motorBIn,LOW);
 }
 
 void pumpControl::Dispense_4_To_1()
 {
   //3/4 A, 1/4 B
-  digitalWrite(motoroutA,HIGH);
+  digitalWrite(motorAOut,HIGH);
   delay(flow_quarter_big);
-  digitalWrite(motoroutA,LOW);
+  digitalWrite(motorAOut,LOW);
   delay(delaytime);
-  digitalWrite(motorinA,HIGH);
+  digitalWrite(motorAIn,HIGH);
   delay(flow_in);
-  digitalWrite(motorinA,LOW);
+  digitalWrite(motorAIn,LOW);
 
-  digitalWrite(motoroutB,HIGH);
+  digitalWrite(motorBOut,HIGH);
   delay(flow_quarter_small);
-  digitalWrite(motoroutB,LOW);
+  digitalWrite(motorBOut,LOW);
   delay(delaytime);
-  digitalWrite(motorinB,HIGH);
+  digitalWrite(motorBIn,HIGH);
   delay(flow_in);
-  digitalWrite(motorinB,LOW);
+  digitalWrite(motorBIn,LOW);
 }
 
 void pumpControl::Dispense_Half_And_Half()
 {
   //1/2 A, 1/2 B
-  digitalWrite(motoroutA,HIGH);
+  digitalWrite(motorAOut,HIGH);
   delay(flow_half);
-  digitalWrite(motoroutA,LOW);
+  digitalWrite(motorAOut,LOW);
   delay(delaytime);
-  digitalWrite(motorinA,HIGH);
+  digitalWrite(motorAIn,HIGH);
   delay(flow_in);
-  digitalWrite(motorinA,LOW);
+  digitalWrite(motorAIn,LOW);
 
-  digitalWrite(motoroutB,HIGH);
+  digitalWrite(motorBOut,HIGH);
   delay(flow_half);
-  digitalWrite(motoroutB,LOW);
+  digitalWrite(motorBOut,LOW);
   delay(delaytime);
-  digitalWrite(motorinB,HIGH);
+  digitalWrite(motorBIn,HIGH);
   delay(flow_in);
-  digitalWrite(motorinB,LOW);
+  digitalWrite(motorBIn,LOW);
 }
 
 void pumpControl::Dispense_Nothing()
