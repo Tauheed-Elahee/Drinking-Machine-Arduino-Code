@@ -1,4 +1,4 @@
-// ELEC 3907: 
+// ELEC 3907: Code to controlthe plinko system
 // Seth Thompson: 101031310
 
 #ifndef game_Control_h
@@ -10,6 +10,15 @@
   #include "WProgram.h"
 #endif
 
+#define plinkoEnable 22
+#define bin1 23
+#define bin2 24
+#define bin3 25
+#define bin4 26
+#define bin5 27
+#define bin6 28
+#define bin7 29
+
 class gameControl
 {
   public:
@@ -19,33 +28,21 @@ class gameControl
   int Play_Game();
 
   private:
-  int Bin1;
-  int Bin2;
-  int Bin3;
-  int Bin4;
-  int Bin5;
-  int Bin6;
-  int Bin7;
+  
 };
 #endif
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// ELEC 3907: Function definitions to get the plinko to output the correct
-// Seth Thompson: 101031310
-
 #include "Arduino.h"
 #include "game_Control.h"
 
+// ELEC 3907: Function definitions to get the plinko to output the correct
+// Seth Thompson: 101031310
+
 gameControl::gameControl()
 {
-  Bin1 = 22;
-  Bin2 = 23;
-  Bin3 = 24;
-  Bin4 = 25;
-  Bin5 = 26;
-  Bin6 = 27;
-  Bin7 = 28;
+  
 }
 
 int gameControl::Play_Game()
@@ -55,51 +52,54 @@ int gameControl::Play_Game()
   // Variable to store the result of the game
   int result;
 
+  digitalWrite(plinkoEnable,HIGH);
   
   while(polling == true)
   {
-    if(digitalRead(Bin1) == LOW)
+    if(digitalRead(bin1) == LOW)
     {
       result = 1;
       polling = false;
     }
 
-    if(digitalRead(Bin2) == LOW)
+    if(digitalRead(bin2) == LOW)
     {
       result = 2;
       polling = false;
     }
 
-    if(digitalRead(Bin3) == LOW)
+    if(digitalRead(bin3) == LOW)
     {
       result = 3;
       polling = false;
     }
 
-    if(digitalRead(Bin4) == LOW)
+    if(digitalRead(bin4) == LOW)
     {
       result = 4;
       polling = false;
     }
 
-    if(digitalRead(Bin5) == LOW)
+    if(digitalRead(bin5) == LOW)
     {
       result = 5;
       polling = false;
     }
 
-    if(digitalRead(Bin6) == LOW)
+    if(digitalRead(bin6) == LOW)
     {
       result = 6;
       polling = false;
     }
 
-    if(digitalRead(Bin7) == LOW)
+    if(digitalRead(bin7) == LOW)
     {
       result = 7;
       polling = false;
     }
   }
+
+  digitalWrite(plinkoEnable,LOW);
 
   // Returning result
   return result;
