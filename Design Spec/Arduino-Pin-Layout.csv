@@ -26,10 +26,10 @@ Pin #,I/O,Function
 41,Out,Motor 1 – Turn Right
 42,Out,Motor 2 – Turn Left
 43,Out,Motor 2 – Turn Right
-50,,MISO – Deditcated Arduino Pin
-51,,MOSI – Dedicated Arduino Pin
-52,,CLK – Dedicated Arduino Pin
-53,,CS – Dedicated Arduino Pin
+50,In,MISO(DO) – Deditcated Arduino Pin
+51,Out,MOSI (DI) – Dedicated Arduino Pin
+52,Out,CLK – Dedicated Arduino Pin
+53,Out,CS – Dedicated Arduino Pin
 ----------,Analogue In,----------
 0,In,Ultra Socnic Sensor – Echo
 1,In,Ultra Sonic Sensor – Trigger
