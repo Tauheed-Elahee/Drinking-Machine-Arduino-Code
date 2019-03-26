@@ -1,7 +1,7 @@
 Pin #,I/O,Function
 ----------,Communication,----------
-18 – TX1, Transmitting Blutooth
-19 – RX1, Reciving Bluetooth
+18 – TX1, Out, Transmitting Blutooth
+19 – RX1, In, Reciving Bluetooth
 ----------,PWM,----------
 7,Out,LCD – Reset
 6,Out,LCD – Enable
