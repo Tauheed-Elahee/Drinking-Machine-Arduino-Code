@@ -1,5 +1,6 @@
-
+#include "WString.h"
 #include "Arduino.h"
+
 #include "PinLayout.h"
 
 
