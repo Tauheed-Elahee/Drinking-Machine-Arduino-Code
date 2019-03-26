@@ -15,6 +15,7 @@ void PinLayout::setup()
 	pinMode(lcdDataLine4, OUTPUT);
 	pinMode(lcdDataLine5, OUTPUT);
 	pinMode(lcdDataLine6, OUTPUT);
+	pinMode(lcdDataLine7, OUTPUT);
 	
 	pinMode(speakerOutput, OUTPUT);
 }

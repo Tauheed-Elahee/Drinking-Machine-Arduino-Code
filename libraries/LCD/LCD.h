@@ -8,15 +8,23 @@
 
 #include "PinLayout.h"
 
-
 // Define the LCD class
 
 // Add a function that returns the selected option back to the main arduino file
 
 class LCD {
+   private:
+   
+   void updateSelectionToOption(int currentOption);
+   void printGameOutcomeWin(int A, int B);
+   void printGameOutcomeLose();
+   
+   LiquidCrystal lcd;
+   int currentOption;
+   
   public:
-   LCD();
   
+   LCD();
    void printWelcomeScreen();
    void printBluetoothScreen();
    void printHomeScreen();

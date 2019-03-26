@@ -14,7 +14,6 @@ LCD::LCD() : lcd(lcdReset, lcdEnable, lcdDataLine4, lcdDataLine5, lcdDataLine6, 
   PinLayout pinLayout;
   pinLayout.setup();
   
-  
   this->lcd.begin(20, 4);
   
   this->currentOption = 1;
@@ -60,7 +59,7 @@ void LCD::printHomeScreen() {
   this->lcd.print("   Recipie");
   this->lcd.setCursor(0, 3);
   this->lcd.print("   Game");
- 
+  
   this->updateSelectionToOption(1);
   
 }
@@ -121,7 +120,6 @@ void LCD::moveSelection(String direction) {
   }
 
   this->updateSelectionToOption(this->currentOption);
-
 }
 
 
