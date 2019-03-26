@@ -13,8 +13,8 @@ This file includes all the constants mapped to the Arduino Pins
 
 
 // For Bluetooth
-#define bluetoothRecieving 0
-#define bluetoothTransmitting 1
+#define bluetoothRecieving 18
+#define bluetoothTransmitting 19
 
 
 
