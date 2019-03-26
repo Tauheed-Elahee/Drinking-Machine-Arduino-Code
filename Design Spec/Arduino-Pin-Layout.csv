@@ -3,12 +3,12 @@ Pin #,I/O,Function
 18 – TX1, Transmitting Blutooth
 19 – RX1, Reciving Bluetooth
 ----------,PWM,----------
-2,Out,LCD – Reset
-3,Out,LCD – Enable
-4,Out,LCD – Data Pin 4
-5,Out,LCD – Data Pin 5
-6,Out,LCD – Data Pin 6
-7,Out,LCD – Data Pin 7
+7,Out,LCD – Reset
+6,Out,LCD – Enable
+5,Out,LCD – Data Pin 4
+4,Out,LCD – Data Pin 5
+3,Out,LCD – Data Pin 6
+2,Out,LCD – Data Pin 7
 10,Out,Speaker – Output
 ----------,Digital,----------
 22,In,Plinko – Bin 1
