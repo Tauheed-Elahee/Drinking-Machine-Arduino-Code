@@ -3,22 +3,22 @@ Pin #,I/O,Function
 18 – TX1, Transmitting Blutooth
 19 – RX1, Reciving Bluetooth
 ----------,PWM,----------
-2,Out,LCD
-3,Out,LCD
-4,Out,LCD
-5,Out,LCD
-11,Out,LCD
-12,Out,LCD
-13,Out,Speaker – Output
+2,Out,LCD – Reset
+3,Out,LCD – Enable
+4,Out,LCD – Data Pin 4
+5,Out,LCD – Data Pin 5
+6,Out,LCD – Data Pin 6
+7,Out,LCD – Data Pin 7
+10,Out,Speaker – Output
 ----------,Digital,----------
-22,In,Plinko ENABLE
-23,In,Plinko Bin 1
-24,In,Plinko Bin 2
-25,In,Plinko Bin 3
-26,In,Plinko Bin 4
-27,In,Plinko Bin 5
-28,In,Plinko Bin 6
-29,In,Plinko Bin 7
+22,In,Plinko – Enable Pin (originally on pin 29)
+23,In,Plinko – Bin 1
+24,In,Plinko – Bin 2
+25,In,Plinko – Bin 3
+26,In,Plinko – Bin 4
+27,In,Plinko – Bin 5
+28,In,Plinko – Bin 6
+29,In,Plinko – Bin 7
 30,In,Button – Back
 31,In,Button – Down
 32,In,Button – Up
@@ -27,10 +27,10 @@ Pin #,I/O,Function
 41,Out,Motor 1 – Turn Right
 42,Out,Motor 2 – Turn Left
 43,Out,Motor 2 – Turn Right
-50,,MISO – Deditcated Arduino Pin
-51,,MOSI – Dedicated Arduino Pin
-52,,CLK – Dedicated Arduino Pin
-53,,CS – Dedicated Arduino Pin
+50,In,SD Card – Master In Slave Out (MISO) (DO) [Deditcated Arduino Pin]
+51,Out,SD Card – Master Out Slave In (MOSI) (DI) [Dedicated Arduino Pin]
+52,Out,SD Card – Serial Clock (CLK) [Dedicated Arduino Pin]
+53,Out,SD Card – Slave Select (CS) [Dedicated Arduino Pin]
 ----------,Analogue In,----------
-0,In,Ultra Socnic Sensor – Echo
+0,In,Ultra Sonic Sensor – Echo
 1,In,Ultra Sonic Sensor – Trigger
