@@ -2,7 +2,7 @@
 
 This file includes all the constants mapped to the Arduino Pins
 
- */
+*/
 
 
 #ifndef PinLayout_h
@@ -12,8 +12,8 @@ This file includes all the constants mapped to the Arduino Pins
 
 
 // For Bluetooth
-#define bluetoothRecieving 0
-#define bluetoothTransmitting 1
+#define bluetoothRecieving 18
+#define bluetoothTransmitting 19
 
 
 
@@ -53,12 +53,12 @@ This file includes all the constants mapped to the Arduino Pins
 // Motors
 
 // Motor 1
-#define motor1TurnRight 40
-#define motor1TurnLeft 41
+#define motorSetAFor 40
+#define motorSetABack 41
 
 // Motor 2
-#define motor2TurnRight 42
-#define motor2TurnLeft 43
+#define motorSetBFor 42
+#define motorSetBBack 43
 
 
 
