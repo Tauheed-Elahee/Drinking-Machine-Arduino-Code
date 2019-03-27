@@ -3,7 +3,7 @@
 
 TimeControl::TimeControl()
 {
-	counter = 60;
+	counter = TIMEOUT_CONST;
 	refTime = 0ul;
 }
 
@@ -14,7 +14,7 @@ int TimeControl::getCounter() {
   return counter;
 }
 void TimeControl::resetCounter() {
-  counter = 60;
+  counter = TIMEOUT_CONST;
 }
 void TimeControl::updateRefTime(unsigned long int refTimeIn) {
   refTime = refTimeIn;

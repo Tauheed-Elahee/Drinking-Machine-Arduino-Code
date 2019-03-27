@@ -1,5 +1,6 @@
 #ifndef time_control_h
 #define time_control_h
+#define TIMEOUT_CONST 60
 
 class TimeControl
 {
