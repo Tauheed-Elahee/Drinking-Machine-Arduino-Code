@@ -79,8 +79,14 @@ void LCD::updateTimeout(int counter) {
 	  lcd.print(counter);
   }
   else {
-	  lcd.print(" " + counter);
+	  lcd.print("0" + counter);
   }
+}
+
+void LCD::printTimeoutOccurred() {
+  lcd.clear();
+  lcd.setCursor(7,1);
+  lcd.print("TIMEOUT");
 }
 
 int	LCD::getSelection()	{
@@ -142,16 +148,6 @@ void LCD::printGameOutcomeScreen(int result) {
 
 
 void LCD::printGameOutcomeWin( int A, int B) {
-  
-// Print the win game screen with the correct amount for drink A and drink B
-    
-//     char Achar = (char)A;
-//     char Astring[12];
-//     Astring[0] = Achar;
-//     Astring[4, 12] = " part A"; // Fix this
-    
-    char Bchar = (char)B;
-    
   lcd.clear();
   lcd.setCursor(2, 0);
   lcd.print("Game Result");

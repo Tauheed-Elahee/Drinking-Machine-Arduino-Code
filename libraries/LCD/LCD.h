@@ -23,19 +23,18 @@ class LCD {
    int currentOption;
    
   public:
-  
+   // needs recipe interface, bluetooth interface etc
    LCD();
    void printWelcomeScreen();
    void printBluetoothScreen();
    void printHomeScreen();
-   void printCustomScreen(int amountOfA);
-   void printRecipieScreen();
    void printGameScreen();
    void printGameOutcomeScreen(int result);
    void moveSelection(String direction);
    int	getSelection();
    void printTimeoutPlaceholder();
    void updateTimeout(int counter);
+   void printTimeoutOccurred();
 };
 
 #endif

@@ -1,10 +1,12 @@
 #include "LCD.h"
 #include "PumpControl.h"
 #include "GameControl.h"
+#include "TimeControl.h"
 
 LCD lcd;
 GameControl game;
 PumpControl pumps;
+TimeControl timeControl;
 
 unsigned long int refTime;
 
@@ -53,14 +55,13 @@ enum stateMachine bluetoothSelectPrimaryMenu () {
   lcd.printBluetoothScreen();
   // millisecond timeout
   char t;
-  int counter = 60;
-  refTime = millis();
+  timeControl.updateRefTime(millis());
   lcd.printTimeoutPlaceholder();
-  while (counter) {
-    if (oneSecondTick(refTime)) {
-      counter--;
-      refTime = millis();
-      lcd.updateTimeout(counter);
+  while (timeControl.getCounter() > 0) {
+    if (timeControl.oneSecondTick()) {
+      timeControl.decrementCounter();
+      timeControl.updateRefTime(millis());
+      lcd.updateTimeout(timeControl.getCounter());
     }
     if (Serial1.available() > 0) {
       t = Serial1.read();
@@ -78,7 +79,10 @@ enum stateMachine bluetoothSelectPrimaryMenu () {
       }
       flushSerial1();
     }
-  } return START_STATE;
+  } 
+  lcd.printTimeoutOccurred();
+  delay(2000);
+  return START_STATE;
 }
 
 enum stateMachine bluetoothSelectDrinkMenu () {
@@ -93,6 +97,7 @@ enum stateMachine gameState () {
 }
 
 void loop() {
+  timeControl.resetCounter();
   switch (currentState) {
     case START_STATE:
       currentState = startState();
@@ -123,8 +128,4 @@ void flushSerial1() {
   while (Serial1.available() > 0 ) {
    t = Serial1.read();
   }
-}
-
-bool oneSecondTick (unsigned long int &lastCheck){
-  return (millis() - lastCheck) > 1000;
 }
