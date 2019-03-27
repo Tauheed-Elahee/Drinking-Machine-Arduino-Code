@@ -1,10 +1,6 @@
-#include "WString.h"
 #include "Arduino.h"
-
 #include "LiquidCrystal.h"
-
 #include "PinLayout.h"
-
 #include "LCD.h"
 
 // The body of the LCD library
@@ -13,23 +9,21 @@ LCD::LCD() : lcd(lcdReset, lcdEnable, lcdDataLine4, lcdDataLine5, lcdDataLine6, 
 {
   PinLayout pinLayout;
   pinLayout.setup();
-  
-  this->lcd.begin(20, 4);
-  
-  this->currentOption = 1;
+  lcd.begin(20, 4);
+  currentOption = 1;
 }
 
 void LCD::printWelcomeScreen() {
   
 // Print the first screen of the DDED to welcome the user.
 
-  this->lcd.clear();
-  this->lcd.setCursor(0, 0);
-  this->lcd.print("Welcome to DDED");
-  this->lcd.setCursor(0, 2);
-  this->lcd.print("   use Bluetooth");
-  this->lcd.setCursor(0, 3);
-  this->lcd.print("   use Buttons");
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Welcome to DDED");
+  lcd.setCursor(0, 2);
+  lcd.print("   use Bluetooth");
+  lcd.setCursor(0, 3);
+  lcd.print("   use Buttons");
   
 }
 
@@ -38,11 +32,11 @@ void LCD::printBluetoothScreen() {
 
 // Print a screen telling the user that the DDED is in bluetooth mode.
 
-  this->lcd.clear();
-  this->lcd.setCursor(0, 1);
-  this->lcd.print("   BLUETOOTH MODE   ");
-  this->lcd.setCursor(0, 2);
-  this->lcd.print("    **********     ");
+  lcd.clear();
+  lcd.setCursor(0, 1);
+  lcd.print("   BLUETOOTH MODE   ");
+  lcd.setCursor(0, 2);
+  lcd.print("    **********     ");
   
 }
 
@@ -50,93 +44,80 @@ void LCD::printHomeScreen() {
 
 // Print the Home screen
   
-  this->lcd.clear();
-  this->lcd.setCursor(0, 0);
-  this->lcd.print("Welcome to DDED!");
-  this->lcd.setCursor(0, 1);
-  this->lcd.print("   Custom");
-  this->lcd.setCursor(0, 2);
-  this->lcd.print("   Recipie");
-  this->lcd.setCursor(0, 3);
-  this->lcd.print("   Game");
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Welcome to DDED!");
+  lcd.setCursor(0, 1);
+  lcd.print("   Custom");
+  lcd.setCursor(0, 2);
+  lcd.print("   Recipie");
+  lcd.setCursor(0, 3);
+  lcd.print("   Game");
+  updateSelectionToOption(1);
   
-  this->updateSelectionToOption(1);
-  
-}
-
-void LCD::printCustomScreen(int amountOfA) {
-
-// Print the custom screen
-  
-  this->lcd.clear();
-  
-  for (int i=0; i<amountOfA; i++) {
-    this->lcd.setCursor(i, 1);
-    this->lcd.print("-");
-  }
-  
-  this->lcd.setCursor(0, 2);
-  this->lcd.print(amountOfA);
-  
-}
-
-void LCD::printRecipieScreen() {
-
 }
 
 void LCD::printGameScreen() {
 
 // Print Game Screen
   
-  this->lcd.clear();
-  this->lcd.setCursor(0, 1);
-  this->lcd.print(" Welcome to Plinko ");
-  this->lcd.setCursor(0, 2);
-  this->lcd.print("   Please Insert Coin   ");
-  
+  lcd.clear();
+  lcd.setCursor(0, 1);
+  lcd.print(" Welcome to Plinko ");
+  lcd.setCursor(0, 2);
+  lcd.print("   Please Insert Coin   "); 
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void LCD::printTimeoutPlaceholder () {
+  lcd.setCursor(8,3);
+  lcd.print("TIMEOUT= ");
+}
 
+void LCD::updateTimeout(int counter) {
+  lcd.setCursor(18,3);
+  if (counter > 9) {
+	  lcd.print(counter);
+  }
+  else {
+	  lcd.print(" " + counter);
+  }
+}
 
 int	LCD::getSelection()	{
-	return this->currentOption;
+	return currentOption;
 }
 
 void LCD::moveSelection(String direction) {
 
   if (direction == "Down") {
-    if (this->currentOption == 3) {
-      this->currentOption = 1;
+    if (currentOption == 3) {
+      currentOption = 1;
     } else {
-      this->currentOption++;
+      currentOption++;
     }
   } else if (direction == "Up") {
-    if (this->currentOption == 1) {
-      this->currentOption = 3;
+    if (currentOption == 1) {
+      currentOption = 3;
     } else {
-      this->currentOption--;
+      currentOption--;
     }
   }
 
-  this->updateSelectionToOption(this->currentOption);
+  updateSelectionToOption(currentOption);
 }
-
 
 void LCD::updateSelectionToOption(int currentOption) {
   
-  this->lcd.setCursor(0, 1);
-  this->lcd.print(" ");
-  this->lcd.setCursor(0, 2);
-  this->lcd.print(" ");
-  this->lcd.setCursor(0, 3);
-  this->lcd.print(" ");
-  this->lcd.setCursor(0, currentOption);
-  this->lcd.print(">");
+  lcd.setCursor(0, 1);
+  lcd.print(" ");
+  lcd.setCursor(0, 2);
+  lcd.print(" ");
+  lcd.setCursor(0, 3);
+  lcd.print(" ");
+  lcd.setCursor(0, currentOption);
+  lcd.print(">");
 
 }
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void LCD::printGameOutcomeScreen(int result) {
   
@@ -171,15 +152,15 @@ void LCD::printGameOutcomeWin( int A, int B) {
     
     char Bchar = (char)B;
     
-  this->lcd.clear();
-  this->lcd.setCursor(2, 0);
-  this->lcd.print("Game Result");
-  this->lcd.setCursor(4, 1);
-  this->lcd.print("You Win");
-  this->lcd.setCursor(3, 2);
-  this->lcd.print(" part A");// need to add variable A
-  this->lcd.setCursor(3, 3);
-  this->lcd.print(" part B");// need to add variable B
+  lcd.clear();
+  lcd.setCursor(2, 0);
+  lcd.print("Game Result");
+  lcd.setCursor(4, 1);
+  lcd.print("You Win");
+  lcd.setCursor(3, 2);
+  lcd.print(" part A");// need to add variable A
+  lcd.setCursor(3, 3);
+  lcd.print(" part B");// need to add variable B
   
 }
 
@@ -187,9 +168,9 @@ void LCD::printGameOutcomeLose() {
   
 //  Print the lose screen
   
-  this->lcd.clear();
-  this->lcd.setCursor(7, 1);
-  this->lcd.print("You Lose!");
-  this->lcd.setCursor(7, 2);
-  this->lcd.print("Try Again!");
+  lcd.clear();
+  lcd.setCursor(7, 1);
+  lcd.print("You Lose!");
+  lcd.setCursor(7, 2);
+  lcd.print("Try Again!");
 }

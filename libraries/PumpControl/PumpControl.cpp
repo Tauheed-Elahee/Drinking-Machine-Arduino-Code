@@ -7,14 +7,14 @@
 
 // 
 
-pumpControl::pumpControl() 
+PumpControl::PumpControl() 
 {
   PinLayout pinLayout;
   pinLayout.setup();
 }
 
 // 4 UNITS MAKE ONE TOTAL DRINK
-void pumpControl::dispense (int unitsOfA, int unitsOfB) {
+void PumpControl::dispense (int unitsOfA, int unitsOfB) {
 	if (unitsOfA != 0) {
 		digitalWrite(motorSetAFor, HIGH);
 		delay(FLOW_TOTAL_LENGTH_TIME_A);

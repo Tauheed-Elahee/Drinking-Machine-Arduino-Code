@@ -34,14 +34,8 @@ class LCD {
    void printGameOutcomeScreen(int result);
    void moveSelection(String direction);
    int	getSelection();
-  
-  private:
-   void updateSelectionToOption(int currentOption);
-   void printGameOutcomeWin(int A, int B);
-   void printGameOutcomeLose();
-
-   LiquidCrystal lcd;
-   int currentOption;
+   void printTimeoutPlaceholder();
+   void updateTimeout(int counter);
 };
 
 #endif

@@ -11,10 +11,10 @@
 #define UNIT_OF_LIQUID_A 1
 #define UNIT_OF_LIQUID_B 1
 
-class pumpControl
+class PumpControl
 {
   public:
-  pumpControl();
+  PumpControl();
 
   // The methods
   void dispense(int unitsOfA, int unitsOfB);
