@@ -38,7 +38,7 @@ enum stateMachine startState () {
       return MANUAL_SELECT_PRIMARY_MENU;
     }
     if (Serial1.available() > 0) {
-      if (Serial1.read == 's') {
+      if (Serial1.read() == 's') {
         flushSerial1();
         return BLUETOOTH_SELECT_PRIMARY_MENU;
       }
