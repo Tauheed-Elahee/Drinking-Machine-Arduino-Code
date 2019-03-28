@@ -9,7 +9,7 @@ Pin #,I/O,Function
 4,Out,LCD – Data Pin 5
 3,Out,LCD – Data Pin 6
 2,Out,LCD – Data Pin 7
-10,Out,Speaker – Output
+11,Out,Speaker – Output
 ----------,Digital,----------
 22,In,Plinko – Bin 1
 23,In,Plinko – Bin 2
