@@ -38,9 +38,12 @@ enum stateMachine startState () {
       return MANUAL_SELECT_PRIMARY_MENU;
     }
     if (Serial1.available() > 0) {
-      flushSerial1();
-      return BLUETOOTH_SELECT_PRIMARY_MENU;
-    }
+      if (Serial1.read == 's') {
+        flushSerial1();
+        return BLUETOOTH_SELECT_PRIMARY_MENU;
+      }
+     flushSerial1();
+    } 
   }
 }
 
@@ -57,7 +60,7 @@ enum stateMachine bluetoothSelectPrimaryMenu () {
   char t;
   timeControl.updateRefTime(millis());
   lcd.printTimeoutPlaceholder();
-  while (timeControl.getCounter() > 0) {
+  while (timeControl.getCounter()) {
     if (timeControl.oneSecondTick()) {
       timeControl.decrementCounter();
       timeControl.updateRefTime(millis());
@@ -79,7 +82,7 @@ enum stateMachine bluetoothSelectPrimaryMenu () {
       }
       flushSerial1();
     }
-  } 
+  }
   lcd.printTimeoutOccurred();
   delay(2000);
   return START_STATE;

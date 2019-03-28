@@ -9,12 +9,11 @@ class TimeControl
 	int unsigned long refTime;
 
   public:
-  
-  TimeControl();
-  bool oneSecondTick();
-  int getCounter();
-  void resetCounter();
-  void updateRefTime(int unsigned long refTimeIn);
-  void decrementCounter();
+    TimeControl();
+    bool oneSecondTick();
+    int getCounter();
+    void resetCounter();
+    void updateRefTime(int unsigned long refTimeIn);
+    void decrementCounter();
 };
 #endif
