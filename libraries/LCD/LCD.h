@@ -15,12 +15,12 @@
 class LCD {
    private:
    
-   void updateSelectionToOption(int currentOption);
+   void updateSelectionToOption();
    void printGameOutcomeWin(int A, int B);
    void printGameOutcomeLose();
    
    LiquidCrystal lcd;
-   int currentOption;
+   int homeMenuCurrentOption;
    
   public:
    // needs recipe interface, bluetooth interface etc

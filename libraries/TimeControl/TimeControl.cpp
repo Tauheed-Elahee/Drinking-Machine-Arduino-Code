@@ -10,6 +10,7 @@ TimeControl::TimeControl()
 bool TimeControl::oneSecondTick (){
   return (millis() - refTime) > 1000;
 }
+
 int TimeControl::getCounter() {
   return counter;
 }

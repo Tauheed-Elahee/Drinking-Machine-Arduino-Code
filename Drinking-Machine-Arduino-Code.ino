@@ -3,12 +3,16 @@
 #include "GameControl.h"
 #include "TimeControl.h"
 
+#define butBack digitalRead(30)
+#define butDown digitalRead(31)
+#define butUp digitalRead(32)
+#define butSelect digitalRead(33)
+
+
 LCD lcd;
 GameControl game;
 PumpControl pumps;
 TimeControl timeControl;
-
-unsigned long int refTime;
 
 enum stateMachine {
   START_STATE,
@@ -48,6 +52,60 @@ enum stateMachine startState () {
 }
 
 enum stateMachine manualSelectPrimaryMenu () {
+  lcd.printHomeScreen();
+  timeControl.updateRefTime(millis());
+  lcd.printTimeoutPlaceholder();
+  // forces select button to be cleared
+  int currentButton = 33;
+  boolean debounce = false;
+  while (timeControl.getCounter()) {
+    if (timeControl.oneSecondTick()) {
+      timeControl.decrementCounter();
+      timeControl.updateRefTime(millis());
+      lcd.updateTimeout(timeControl.getCounter());
+    }
+    // check for debounce
+    if (!digitalRead(currentButton)) {
+      debounce = true;
+      delay(5);
+    }
+    if (debounce) {
+      if (butDown) {
+      lcd.moveSelection("Down");
+        Serial.println("d");
+        currentButton = 31;
+        debounce = false;
+      }
+      else if (butUp) {
+        lcd.moveSelection("Up");
+        Serial.println("u");
+        currentButton = 32;
+        debounce = false;
+      }
+      else if (butBack) {
+      //  return START_STATE;
+        Serial.println("b");
+        currentButton = 30;
+        debounce = false;
+      }
+      else if (butSelect) {
+      //  break;
+        Serial.println("s");
+        currentButton = 33;
+        debounce = false;
+      }
+    }
+  }
+  if (!timeControl.getCounter()) {
+      lcd.printTimeoutOccurred();
+      delay(2000);
+      return START_STATE;
+  }
+  switch (lcd.getSelection()) {
+    case 1: return MANUAL_SELECT_DRINK_MENU;
+    case 2: return GAME_STATE;
+    default: return START_STATE;
+  }
 }
 
 enum stateMachine manualSelectDrinkMenu () {
@@ -122,6 +180,9 @@ void loop() {
       break;
     case GAME_STATE:
       currentState = gameState();
+      break;
+    default:
+      currentState = startState();
       break;
   }
 }

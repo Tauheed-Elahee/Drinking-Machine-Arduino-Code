@@ -10,7 +10,7 @@ LCD::LCD() : lcd(lcdReset, lcdEnable, lcdDataLine4, lcdDataLine5, lcdDataLine6, 
   PinLayout pinLayout;
   pinLayout.setup();
   lcd.begin(20, 4);
-  currentOption = 1;
+  homeMenuCurrentOption = 1;
 }
 
 void LCD::printWelcomeScreen() {
@@ -19,11 +19,14 @@ void LCD::printWelcomeScreen() {
 
   lcd.clear();
   lcd.setCursor(0, 0);
-  lcd.print("Welcome to DDED");
-  lcd.setCursor(0, 2);
-  lcd.print("   use Bluetooth");
-  lcd.setCursor(0, 3);
-  lcd.print("   use Buttons");
+  // TBD every loop put in another line
+  lcd.print("Drink anyone?");
+  lcd.setCursor(2, 1);
+  lcd.print("<< START >>");
+  lcd.setCursor(5, 2);
+  lcd.print("Use App or");
+  lcd.setCursor(5, 3);
+  lcd.print("Hit Select");
   
 }
 
@@ -46,15 +49,13 @@ void LCD::printHomeScreen() {
   
   lcd.clear();
   lcd.setCursor(0, 0);
-  lcd.print("Welcome to DDED!");
+  lcd.print("   Manual Mode!");
   lcd.setCursor(0, 1);
-  lcd.print("   Custom");
+  lcd.print("   Get a drink");
   lcd.setCursor(0, 2);
-  lcd.print("   Recipie");
-  lcd.setCursor(0, 3);
-  lcd.print("   Game");
-  updateSelectionToOption(1);
-  
+  lcd.print("   Play Plinko Game");
+  homeMenuCurrentOption = 1;
+  updateSelectionToOption();
 }
 
 void LCD::printGameScreen() {
@@ -90,29 +91,28 @@ void LCD::printTimeoutOccurred() {
 }
 
 int	LCD::getSelection()	{
-	return currentOption;
+	return homeMenuCurrentOption;
 }
 
 void LCD::moveSelection(String direction) {
 
   if (direction == "Down") {
-    if (currentOption == 3) {
-      currentOption = 1;
+    if (homeMenuCurrentOption == 2) {
+      homeMenuCurrentOption = 1;
     } else {
-      currentOption++;
+      homeMenuCurrentOption++;
     }
   } else if (direction == "Up") {
-    if (currentOption == 1) {
-      currentOption = 3;
+    if (homeMenuCurrentOption == 1) {
+      homeMenuCurrentOption = 2;
     } else {
-      currentOption--;
+      homeMenuCurrentOption--;
     }
   }
-
-  updateSelectionToOption(currentOption);
+  updateSelectionToOption();
 }
 
-void LCD::updateSelectionToOption(int currentOption) {
+void LCD::updateSelectionToOption() {
   
   lcd.setCursor(0, 1);
   lcd.print(" ");
@@ -120,7 +120,7 @@ void LCD::updateSelectionToOption(int currentOption) {
   lcd.print(" ");
   lcd.setCursor(0, 3);
   lcd.print(" ");
-  lcd.setCursor(0, currentOption);
+  lcd.setCursor(0, homeMenuCurrentOption);
   lcd.print(">");
 
 }
