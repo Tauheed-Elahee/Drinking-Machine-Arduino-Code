@@ -1,13 +1,16 @@
-// ELEC 3907: Code to controlthe plinko system
-// Seth Thompson: 101031310
-
 #ifndef game_Control_h
 #define game_Control_h
 
 class GameControl
 {
+  private:
+    int readAsLowBin;
   public:
-  GameControl();
-  int playGame();
+    GameControl();
+    bool checkPlinko();
+    void returnGameResult(int &unitsOfA, int &unitsOfB);
+    int getBin();
+    void enable();
+    void disable();
 };
 #endif

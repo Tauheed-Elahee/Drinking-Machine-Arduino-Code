@@ -72,27 +72,19 @@ enum stateMachine manualSelectPrimaryMenu () {
     if (debounce) {
       if (butDown) {
       lcd.moveSelection("Down");
-        Serial.println("d");
         currentButton = 31;
         debounce = false;
       }
       else if (butUp) {
         lcd.moveSelection("Up");
-        Serial.println("u");
         currentButton = 32;
         debounce = false;
       }
       else if (butBack) {
-      //  return START_STATE;
-        Serial.println("b");
-        currentButton = 30;
-        debounce = false;
+        return START_STATE;
       }
       else if (butSelect) {
-      //  break;
-        Serial.println("s");
-        currentButton = 33;
-        debounce = false;
+        break;
       }
     }
   }
@@ -154,7 +146,31 @@ enum stateMachine bluetoothRecipeSaveState () {
 }
 
 enum stateMachine gameState () {
-  
+  lcd.printGameScreen();
+  timeControl.updateRefTime(millis());
+  lcd.printTimeoutPlaceholder();
+  game.enable();
+  while (timeControl.getCounter()) {
+    if (timeControl.oneSecondTick()) {
+      timeControl.decrementCounter();
+      timeControl.updateRefTime(millis());
+      lcd.updateTimeout(timeControl.getCounter());
+    }
+    if (game.checkPlinko()) {
+      game.disable();
+      int unitsOfA;
+      int unitsOfB;
+      game.returnGameResult(unitsOfA, unitsOfB);
+      lcd.printGameOutcomeScreen(game.getBin());
+      delay(4000);
+      // print dispensing drink
+      pumps.dispense(unitsOfA, unitsOfB);
+    }
+  }
+  game.disable();
+  lcd.printTimeoutOccurred();
+  delay(2000);
+  return START_STATE;
 }
 
 void loop() {

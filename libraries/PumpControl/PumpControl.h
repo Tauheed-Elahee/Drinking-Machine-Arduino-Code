@@ -1,6 +1,3 @@
-// ELEC 3907: Header file to get pumps going in skeleton
-// Seth Thompson: 101031310
-
 #ifndef pump_Control_h
 #define pump_Control_h
 

@@ -2,11 +2,6 @@
 #include "PumpControl.h"
 #include "PinLayout.h"
 
-// ELEC 3907: cpp file to get pumps going in skeleton
-// Seth Thompson: 101031310
-
-// 
-
 PumpControl::PumpControl() 
 {
   PinLayout pinLayout;

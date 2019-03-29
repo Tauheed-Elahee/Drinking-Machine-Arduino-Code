@@ -14,9 +14,6 @@ LCD::LCD() : lcd(lcdReset, lcdEnable, lcdDataLine4, lcdDataLine5, lcdDataLine6, 
 }
 
 void LCD::printWelcomeScreen() {
-  
-// Print the first screen of the DDED to welcome the user.
-
   lcd.clear();
   lcd.setCursor(0, 0);
   // TBD every loop put in another line
@@ -27,26 +24,17 @@ void LCD::printWelcomeScreen() {
   lcd.print("Use App or");
   lcd.setCursor(5, 3);
   lcd.print("Hit Select");
-  
 }
 
 void LCD::printBluetoothScreen() {
-  
-
-// Print a screen telling the user that the DDED is in bluetooth mode.
-
   lcd.clear();
   lcd.setCursor(0, 1);
-  lcd.print("   BLUETOOTH MODE   ");
-  lcd.setCursor(0, 2);
-  lcd.print("    **********     ");
-  
+  lcd.print("Hijacked by Androids");
+  lcd.setCursor(2, 2);
+  lcd.print("<< USING APP >>");
 }
 
 void LCD::printHomeScreen() {
-
-// Print the Home screen
-  
   lcd.clear();
   lcd.setCursor(0, 0);
   lcd.print("   Manual Mode!");
@@ -58,10 +46,7 @@ void LCD::printHomeScreen() {
   updateSelectionToOption();
 }
 
-void LCD::printGameScreen() {
-
-// Print Game Screen
-  
+void LCD::printGameScreen() {  
   lcd.clear();
   lcd.setCursor(0, 1);
   lcd.print(" Welcome to Plinko ");
@@ -95,7 +80,6 @@ int	LCD::getSelection()	{
 }
 
 void LCD::moveSelection(String direction) {
-
   if (direction == "Down") {
     if (homeMenuCurrentOption == 2) {
       homeMenuCurrentOption = 1;
@@ -113,7 +97,6 @@ void LCD::moveSelection(String direction) {
 }
 
 void LCD::updateSelectionToOption() {
-  
   lcd.setCursor(0, 1);
   lcd.print(" ");
   lcd.setCursor(0, 2);
@@ -122,25 +105,24 @@ void LCD::updateSelectionToOption() {
   lcd.print(" ");
   lcd.setCursor(0, homeMenuCurrentOption);
   lcd.print(">");
-
 }
 
 void LCD::printGameOutcomeScreen(int result) {
   
   switch(result) {
-    case 1:  printGameOutcomeWin(100, 0); //  A = 100 and B = 0
+    case 0:  printGameOutcomeWin(100, 0); //  A = 100 and B = 0
         break;
-    case 2:  printGameOutcomeWin(25, 75); //  A = 25 and B = 75
+    case 1:  printGameOutcomeWin(25, 75); //  A = 25 and B = 75
         break;
-    case 3:  printGameOutcomeLose();      //  A = 0 and B = 0
+    case 2:  printGameOutcomeLose();      //  A = 0 and B = 0
         break;
-    case 4:  printGameOutcomeWin(50, 50); //  A = 50 and B = 50
+    case 3:  printGameOutcomeWin(50, 50); //  A = 50 and B = 50
         break;
-    case 5:  printGameOutcomeLose();      //  A = 0 and B = 0
+    case 4:  printGameOutcomeLose();      //  A = 0 and B = 0
         break;
-    case 6:  printGameOutcomeWin(75, 25); //  A = 75 and B = 25
+    case 5:  printGameOutcomeWin(75, 25); //  A = 75 and B = 25
         break;
-    case 7:  printGameOutcomeWin(0, 100); //  A = 0 and B = 100
+    case 6:  printGameOutcomeWin(0, 100); //  A = 0 and B = 100
         break;
   }
   
@@ -148,22 +130,20 @@ void LCD::printGameOutcomeScreen(int result) {
 
 
 void LCD::printGameOutcomeWin( int A, int B) {
+  String a = "  " + a + "part(s) A";
+  String b = "  " + b + "part(s) B";
   lcd.clear();
   lcd.setCursor(2, 0);
   lcd.print("Game Result");
   lcd.setCursor(4, 1);
   lcd.print("You Win");
   lcd.setCursor(3, 2);
-  lcd.print(" part A");// need to add variable A
+  lcd.print(a);
   lcd.setCursor(3, 3);
-  lcd.print(" part B");// need to add variable B
-  
+  lcd.print(b);
 }
 
 void LCD::printGameOutcomeLose() {
-  
-//  Print the lose screen
-  
   lcd.clear();
   lcd.setCursor(7, 1);
   lcd.print("You Lose!");
