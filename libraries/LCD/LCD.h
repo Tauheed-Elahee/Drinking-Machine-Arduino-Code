@@ -30,6 +30,9 @@ class LCD {
    void printHomeScreen();
    void moveHomeSelection(String direction);
    int	getHomeSelection();
+   void printDrinkSelectScreen();
+   void moveDrinkSelection(String direction);
+   int getDrinkSelection();
    void printBluetoothScreen();
    void printGameScreen();
    void printGameOutcomeScreen(int result);
