@@ -71,12 +71,12 @@ enum stateMachine manualSelectPrimaryMenu () {
     }
     if (debounce) {
       if (butDown) {
-      lcd.moveSelection("Down");
+      lcd.moveHomeSelection("Down");
         currentButton = 31;
         debounce = false;
       }
       else if (butUp) {
-        lcd.moveSelection("Up");
+        lcd.moveHomeSelection("Up");
         currentButton = 32;
         debounce = false;
       }
@@ -93,7 +93,7 @@ enum stateMachine manualSelectPrimaryMenu () {
       delay(2000);
       return START_STATE;
   }
-  switch (lcd.getSelection()) {
+  switch (lcd.getHomeSelection()) {
     case 1: return MANUAL_SELECT_DRINK_MENU;
     case 2: return GAME_STATE;
     default: return START_STATE;

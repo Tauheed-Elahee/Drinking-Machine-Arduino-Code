@@ -43,7 +43,7 @@ void LCD::printHomeScreen() {
   lcd.setCursor(0, 2);
   lcd.print("   Play Plinko Game");
   homeMenuCurrentOption = 1;
-  updateSelectionToOption();
+  updateHomeSelection();
 }
 
 void LCD::printGameScreen() {  
@@ -75,11 +75,11 @@ void LCD::printTimeoutOccurred() {
   lcd.print("TIMEOUT");
 }
 
-int	LCD::getSelection()	{
+int	LCD::getHomeSelection()	{
 	return homeMenuCurrentOption;
 }
 
-void LCD::moveSelection(String direction) {
+void LCD::moveHomeSelection(String direction) {
   if (direction == "Down") {
     if (homeMenuCurrentOption == 2) {
       homeMenuCurrentOption = 1;
@@ -93,10 +93,10 @@ void LCD::moveSelection(String direction) {
       homeMenuCurrentOption--;
     }
   }
-  updateSelectionToOption();
+  updateHomeSelection();
 }
 
-void LCD::updateSelectionToOption() {
+void LCD::updateHomeSelection() {
   lcd.setCursor(0, 1);
   lcd.print(" ");
   lcd.setCursor(0, 2);
