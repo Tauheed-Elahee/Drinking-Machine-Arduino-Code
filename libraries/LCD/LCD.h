@@ -27,12 +27,12 @@ class LCD {
    // needs recipe interface, bluetooth interface etc
    LCD();
    void printWelcomeScreen();
-   void printBluetoothScreen();
    void printHomeScreen();
-   void printGameScreen();
-   void printGameOutcomeScreen(int result);
    void moveHomeSelection(String direction);
    int	getHomeSelection();
+   void printBluetoothScreen();
+   void printGameScreen();
+   void printGameOutcomeScreen(int result);
    void printTimeoutPlaceholder();
    void updateTimeout(int counter);
    void printTimeoutOccurred();

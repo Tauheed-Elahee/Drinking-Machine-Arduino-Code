@@ -53,11 +53,11 @@ enum stateMachine startState () {
 
 enum stateMachine manualSelectPrimaryMenu () {
   lcd.printHomeScreen();
-  timeControl.updateRefTime(millis());
   lcd.printTimeoutPlaceholder();
   // forces select button to be cleared
   int currentButton = 33;
   boolean debounce = false;
+  timeControl.updateRefTime(millis());
   while (timeControl.getCounter()) {
     if (timeControl.oneSecondTick()) {
       timeControl.decrementCounter();
@@ -106,10 +106,9 @@ enum stateMachine manualSelectDrinkMenu () {
 
 enum stateMachine bluetoothSelectPrimaryMenu () {
   lcd.printBluetoothScreen();
-  // millisecond timeout
+  lcd.printTimeoutPlaceholder();
   char t;
   timeControl.updateRefTime(millis());
-  lcd.printTimeoutPlaceholder();
   while (timeControl.getCounter()) {
     if (timeControl.oneSecondTick()) {
       timeControl.decrementCounter();
@@ -147,9 +146,9 @@ enum stateMachine bluetoothRecipeSaveState () {
 
 enum stateMachine gameState () {
   lcd.printGameScreen();
-  timeControl.updateRefTime(millis());
   lcd.printTimeoutPlaceholder();
   game.enable();
+  timeControl.updateRefTime(millis());
   while (timeControl.getCounter()) {
     if (timeControl.oneSecondTick()) {
       timeControl.decrementCounter();
