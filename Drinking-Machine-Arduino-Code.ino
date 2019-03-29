@@ -165,6 +165,7 @@ enum stateMachine gameState () {
       delay(4000);
       // print dispensing drink
       pumps.dispense(unitsOfA, unitsOfB);
+      return START_STATE;
     }
   }
   game.disable();
