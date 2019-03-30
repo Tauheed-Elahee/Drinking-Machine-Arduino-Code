@@ -29,6 +29,7 @@ enum stateMachine currentState;
 void setup() {
   Serial.begin(9600);
   Serial1.begin(9600);
+  Serial.println("asdasd");
   currentState = START_STATE;
 }
 
@@ -71,12 +72,12 @@ enum stateMachine manualSelectPrimaryMenu () {
     }
     if (debounce) {
       if (butDown) {
-      lcd.moveHomeSelection("Down");
+      lcd.moveHomeSelection('d');
         currentButton = 31;
         debounce = false;
       }
       else if (butUp) {
-        lcd.moveHomeSelection("Up");
+        lcd.moveHomeSelection('u');
         currentButton = 32;
         debounce = false;
       }

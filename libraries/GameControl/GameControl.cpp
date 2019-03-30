@@ -10,9 +10,9 @@ GameControl::GameControl()
 
 bool GameControl::checkPlinko() {
 	for (int i = 0; i < 7; i++) {
-	  if(digitalRead(plinkoBin1 + i)) {
+	  if(!digitalRead(plinkoBin1 + i)) {
       delay(5);
-      if(digitalRead(plinkoBin1 + i)) {
+      if(!digitalRead(plinkoBin1 + i)) {
         readAsLowBin = i;
         return true;
       }

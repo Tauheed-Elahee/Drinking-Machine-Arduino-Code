@@ -10,20 +10,19 @@ LCD::LCD() : lcd(lcdReset, lcdEnable, lcdDataLine4, lcdDataLine5, lcdDataLine6, 
   PinLayout pinLayout;
   pinLayout.setup();
   lcd.begin(20, 4);
+ // lcd.noAutoscroll();
   homeMenuCurrentOption = 1;
 }
 
 void LCD::printWelcomeScreen() {
   lcd.clear();
-  lcd.setCursor(0, 0);
+  lcd.setCursor(4, 0);
   // TBD every loop put in another line
   lcd.print("Drink anyone?");
-  lcd.setCursor(2, 1);
+  lcd.setCursor(5, 1);
   lcd.print("<< START >>");
-  lcd.setCursor(5, 2);
-  lcd.print("Use App or");
-  lcd.setCursor(5, 3);
-  lcd.print("Hit Select");
+  lcd.setCursor(0, 3);
+  lcd.print("Use App / Hit Select");
 }
 
 void LCD::printHomeScreen() {
@@ -38,14 +37,14 @@ void LCD::printHomeScreen() {
   updateHomeSelection();
 }
 
-void LCD::moveHomeSelection(String direction) {
-  if (direction == "Down") {
+void LCD::moveHomeSelection(char direction) {
+  if (direction == 'd') {
     if (homeMenuCurrentOption == 2) {
       homeMenuCurrentOption = 1;
     } else {
       homeMenuCurrentOption++;
     }
-  } else if (direction == "Up") {
+  } else if (direction == 'u') {
     if (homeMenuCurrentOption == 1) {
       homeMenuCurrentOption = 2;
     } else {
@@ -80,9 +79,9 @@ void LCD::printBluetoothScreen() {
 
 void LCD::printGameScreen() {  
   lcd.clear();
-  lcd.setCursor(0, 1);
+  lcd.setCursor(0, 0);
   lcd.print(" Welcome to Plinko ");
-  lcd.setCursor(0, 2);
+  lcd.setCursor(0, 1);
   lcd.print("   Please Insert Coin   "); 
 }
 
@@ -106,17 +105,17 @@ void LCD::printGameOutcomeScreen(int result) {
 }
 
 void LCD::printGameOutcomeWin( int A, int B) {
-  String a = "  " + a + "part(s) A";
-  String b = "  " + b + "part(s) B";
   lcd.clear();
-  lcd.setCursor(2, 0);
-  lcd.print("Game Result");
-  lcd.setCursor(4, 1);
-  lcd.print("You Win");
+  lcd.setCursor(4, 0);
+  lcd.print("WINNER/GAGNANT");
+  lcd.setCursor(3, 1);
+  lcd.print("%");
+  lcd.print(A);
+  lcd.print("  of A");
   lcd.setCursor(3, 2);
-  lcd.print(a);
-  lcd.setCursor(3, 3);
-  lcd.print(b);
+  lcd.print("%");
+  lcd.print(B);
+  lcd.print(" of B");
 }
 
 void LCD::printGameOutcomeLose() {
@@ -128,17 +127,18 @@ void LCD::printGameOutcomeLose() {
 }
 
 void LCD::printTimeoutPlaceholder () {
-  lcd.setCursor(8,3);
-  lcd.print("TIMEOUT= ");
+  lcd.setCursor(9,3);
+  lcd.print("TIMEOUT= 60");
 }
 
 void LCD::updateTimeout(int counter) {
   lcd.setCursor(18,3);
   if (counter > 9) {
-	  lcd.print(counter);
+    lcd.print(counter);
   }
   else {
-	  lcd.print("0" + counter);
+    lcd.print(" ");
+    lcd.print(counter);
   }
 }
 

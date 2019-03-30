@@ -1,16 +1,7 @@
 #ifndef LCD_h
 #define LCD_h
-
-#include "WString.h"
 #include "Arduino.h"
-
 #include "LiquidCrystal.h"
-
-#include "PinLayout.h"
-
-// Define the LCD class
-
-// Add a function that returns the selected option back to the main arduino file
 
 class LCD {
    private:
@@ -28,10 +19,10 @@ class LCD {
    LCD();
    void printWelcomeScreen();
    void printHomeScreen();
-   void moveHomeSelection(String direction);
+   void moveHomeSelection(char direction);
    int	getHomeSelection();
    void printDrinkSelectScreen();
-   void moveDrinkSelection(String direction);
+   void moveDrinkSelection(char direction);
    int getDrinkSelection();
    void printBluetoothScreen();
    void printGameScreen();
