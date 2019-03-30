@@ -316,7 +316,7 @@ enum stateMachine gameState () {
       lcd.printGameOutcomeScreen(game.getBin());
       delay(4000);
       if (unitsOfA || unitsOfB) {
-        lcd.printDispensing(unitsOfA,unitsOfA);
+        lcd.printDispensing(unitsOfA,unitsOfB);
         pumps.dispense(unitsOfA, unitsOfB);
       }
       return START_STATE;
