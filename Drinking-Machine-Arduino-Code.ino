@@ -31,6 +31,7 @@ void setup() {
   Serial.begin(9600);
   Serial1.begin(9600);
   currentState = START_STATE;
+  // have to decide when to prime and clear pumps
 }
 
 enum stateMachine startState () {

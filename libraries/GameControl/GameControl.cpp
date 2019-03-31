@@ -21,13 +21,14 @@ bool GameControl::checkPlinko() {
   return false;
 }
 void GameControl::returnGameResult(int &a, int &b) {
+  Serial.println(readAsLowBin);
   switch (readAsLowBin) {
     case 0: a=4;b=0;break;
     case 1: a=3;b=1;break;
     case 2: a=0;b=0;break;
     case 3: a=2;b=2;break;
-    case 4: a=1;b=3;break;
-    case 5: a=0;b=0;break;
+    case 4: a=0;b=0;break;
+    case 5: a=1;b=3;break;
     case 6: a=0;b=4;break;
     default: a=0;b=0;break;
   }

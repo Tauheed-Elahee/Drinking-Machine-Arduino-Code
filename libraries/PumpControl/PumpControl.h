@@ -5,8 +5,8 @@
 
 #define FLOW_TOTAL_LENGTH_TIME_A 1000
 #define FLOW_TOTAL_LENGTH_TIME_B 1000
-#define UNIT_OF_LIQUID_A 1
-#define UNIT_OF_LIQUID_B 1
+#define UNIT_OF_LIQUID_A 12500
+#define UNIT_OF_LIQUID_B 18518
 
 class PumpControl
 {
@@ -14,6 +14,10 @@ class PumpControl
   PumpControl();
 
   // The methods
+  void primeA();
+  void primeB();
+  void clearA();
+  void clearB();
   void dispense(int unitsOfA, int unitsOfB);
 };
 #endif
