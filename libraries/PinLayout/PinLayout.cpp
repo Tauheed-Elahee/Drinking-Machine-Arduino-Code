@@ -25,7 +25,7 @@ void PinLayout::setup()
 	pinMode(motorSetBFor, OUTPUT);
 	pinMode(motorSetBBack, OUTPUT);
 	// PLINKO
-	pinMode(plinkoEnable, INPUT);
+	pinMode(plinkoEnable, OUTPUT);
 	pinMode(plinkoBin1, INPUT);
 	pinMode(plinkoBin2, INPUT);
 	pinMode(plinkoBin3, INPUT);
