@@ -2,17 +2,22 @@
 #include "PumpControl.h"
 #include "GameControl.h"
 #include "TimeControl.h"
+#include <SD.h>
+#include "TMRpcm.h"
+#include <SPI.h>
 
 #define butBack digitalRead(30)
 #define butDown digitalRead(31)
 #define butUp digitalRead(32)
 #define butSelect digitalRead(33)
 
+#define SD_chipSelectPin 10
 
 LCD lcd;
 GameControl game;
 PumpControl pumps;
 TimeControl timeControl;
+TMRpcm tmrpcm;
 
 enum stateMachine {
   START_STATE,
@@ -31,6 +36,9 @@ void setup() {
   Serial.begin(9600);
   Serial1.begin(9600);
   currentState = START_STATE;
+  
+  if(!SD.begin(SD_chipSelectPin)) Serial.println("SD failed");
+  tmrpcm.speakerPin = 9;
   // have to decide when to prime and clear pumps
 }
 
@@ -318,7 +326,10 @@ enum stateMachine gameState () {
       delay(4000);
       if (unitsOfA || unitsOfB) {
         lcd.printDispensing(unitsOfA,unitsOfB);
+        tmrpcm.play("1.WAV");
         pumps.dispense(unitsOfA, unitsOfB);
+        while (tmrpcm.isPlaying()) {
+        }
       }
       return START_STATE;
     }
