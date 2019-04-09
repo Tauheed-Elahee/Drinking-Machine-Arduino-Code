@@ -257,6 +257,11 @@ enum stateMachine manualSelectCustomMenu() {
             int unitsOfB;
             lcd.getCustomDrinkParams(unitsOfA,unitsOfB);
             if (unitsOfA || unitsOfB) {
+              if ((unitsOfA + unitsOfB) > 4) {
+                tmrpcm.play("3.WAV");
+                while (tmrpcm.isPlaying()) {
+                }
+              }
               lcd.printDispensing(unitsOfA,unitsOfB);
               pumps.dispense(unitsOfA,unitsOfB);
             }
@@ -310,6 +315,9 @@ enum stateMachine bluetoothSelectPrimaryMenu () {
 
 enum stateMachine gameState () {
   lcd.printGameScreen();
+  tmrpcm.play("5.WAV");
+  while (tmrpcm.isPlaying()) {
+  }
   lcd.printTimeoutPlaceholder();
   game.enable();
   timeControl.updateRefTime(millis());
@@ -325,11 +333,14 @@ enum stateMachine gameState () {
       int unitsOfB;
       game.returnGameResult(unitsOfA, unitsOfB);
       lcd.printGameOutcomeScreen(game.getBin());
-      delay(4000);
       if (unitsOfA || unitsOfB) {
-        lcd.printDispensing(unitsOfA,unitsOfB);
         tmrpcm.play("1.WAV");
+        while (tmrpcm.isPlaying()) {
+        }
+        lcd.printDispensing(unitsOfA,unitsOfB);
         pumps.dispense(unitsOfA, unitsOfB);
+      } else {
+        tmrpcm.play("4.WAV");
         while (tmrpcm.isPlaying()) {
         }
       }
