@@ -11,7 +11,7 @@
 #define butUp digitalRead(32)
 #define butSelect digitalRead(33)
 
-#define SD_chipSelectPin 10
+#define SD_chipSelectPin 53
 
 LCD lcd;
 GameControl game;
@@ -37,8 +37,10 @@ void setup() {
   Serial1.begin(9600);
   currentState = START_STATE;
   
+  pinMode(SD_chipSelectPin, OUTPUT);
   if(!SD.begin(SD_chipSelectPin)) Serial.println("SD failed");
-  tmrpcm.speakerPin = 9;
+  else Serial.println("SD success");
+  tmrpcm.speakerPin = 11;
   // have to decide when to prime and clear pumps
 }
 
