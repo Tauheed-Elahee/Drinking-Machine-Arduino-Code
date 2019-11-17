@@ -1,47 +1,58 @@
 #ifndef LCD_h
 #define LCD_h
-
-#include "WString.h"
 #include "Arduino.h"
-
 #include "LiquidCrystal.h"
-
-#include "PinLayout.h"
-
-// Define the LCD class
-
-// Add a function that returns the selected option back to the main arduino file
 
 class LCD {
    private:
    
-   void updateSelectionToOption(int currentOption);
+   void updateTwoChoiceSelection();
+   void updateThreeChoiceSelection();
+   void updatePremixedSelection();
+   
    void printGameOutcomeWin(int A, int B);
    void printGameOutcomeLose();
    
    LiquidCrystal lcd;
-   int currentOption;
+   int twoChoiceCurrentOption;
+   int premixedCurrentOption;
+   int threeChoiceCurrentOption;
+   int unitsOfA;
+   int unitsOfB;
    
   public:
-  
+   // needs recipe interface, bluetooth interface etc
    LCD();
    void printWelcomeScreen();
-   void printBluetoothScreen();
+   
+   void printDispensing(int a, int b);
+   
    void printHomeScreen();
-   void printCustomScreen(int amountOfA);
-   void printRecipieScreen();
+   
+   void moveTwoChoiceSelection(char direction);
+   int	getTwoChoiceSelection();
+   
+   void moveThreeChoiceSelection(char direction);
+   int getThreeChoiceSelection();
+   
+   void printDrinkSelectScreen();
+   
+   void printDrinkPremixedScreen();
+   void movePremixedSelection(char direction);
+   int getPremixSelection();
+   
+   void printDrinkCustomScreen();
+   void getCustomDrinkParams(int &a, int &b);
+   void incrementDrinkCounter(char drink);
+   
+   void printBluetoothScreen();
+   
    void printGameScreen();
    void printGameOutcomeScreen(int result);
-   void moveSelection(String direction);
-   int	getSelection();
-  
-  private:
-   void updateSelectionToOption(int currentOption);
-   void printGameOutcomeWin(int A, int B);
-   void printGameOutcomeLose();
-
-   LiquidCrystal lcd;
-   int currentOption;
+   
+   void printTimeoutPlaceholder();
+   void updateTimeout(int counter);
+   void printTimeoutOccurred();
 };
 
 #endif
